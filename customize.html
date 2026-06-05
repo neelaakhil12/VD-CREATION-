@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Design and order your customizable photo frame. Upload your image, pan, zoom, crop, and preview it live inside acrylic or glowing LED frames.">
+  <title>Live Frame Customizer & Preview | VD CREATION</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050e1a',
+              900: '#0B1F3A',
+              800: '#13294B',
+              700: '#1E3A5F',
+              600: '#2A4D7C',
+            },
+            gold: {
+              DEFAULT: '#D4AF37',
+              hover: '#F3CD46'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-navy-950 text-white min-h-screen flex flex-col">
+
+  <!-- Sticky Navbar (Injected dynamically) -->
+  <header id="global-header"></header>
+
+  <!-- Main Content -->
+  <main class="flex-grow py-10 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto space-y-8">
+      
+      <!-- Back Link & Title -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6" data-aos="fade-up">
+        <div class="space-y-1">
+          <a href="services.html" class="inline-flex items-center space-x-2 text-xs text-gray-400 hover:text-[#D4AF37] transition-colors mb-2">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Frame Catalog</span>
+          </a>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">Interactive Frame Customizer</h1>
+        </div>
+        <div class="text-[10px] text-gray-400 flex items-center space-x-2 bg-navy-900/80 px-4 py-2 rounded-full border border-slate-800">
+          <span class="w-2 h-2 rounded-full bg-green-500"></span>
+          <span class="font-semibold uppercase tracking-wider">Live Preview System Active</span>
+        </div>
+      </div>
+
+      <!-- Main Customizer Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Side: Interactive Preview Canvas Panel (7 cols) -->
+        <div class="lg:col-span-7 bg-navy-900/60 border border-slate-800 p-6 rounded-3xl backdrop-blur-md space-y-6 flex flex-col items-center justify-between min-h-[500px]" data-aos="fade-right">
+          
+          <div class="w-full text-center space-y-1 border-b border-slate-800/80 pb-4">
+            <span class="text-[10px] uppercase tracking-widest text-[#D4AF37] font-bold">Preview Area</span>
+            <p class="text-[11px] text-gray-400">Drag picture to center, adjust zoom and rotation below.</p>
+          </div>
+
+          <!-- Dynamic Aspect-Ratio Frame Container -->
+          <div id="customizer-frame-outer-wrapper" class="relative mx-auto transition-all duration-300 flex items-center justify-center w-[300px] h-[300px] my-6">
+            <!-- Injected border frame wrapper -->
+            <div id="customizer-frame-preview" class="w-full h-full frame-acrylic flex items-center justify-center overflow-hidden">
+              
+              <!-- Acrylic studs (Hidden by default based on style) -->
+              <div class="acrylic-stud stud-tl hidden"></div>
+              <div class="acrylic-stud stud-tr hidden"></div>
+              <div class="acrylic-stud stud-bl hidden"></div>
+              <div class="acrylic-stud stud-br hidden"></div>
+              
+              <!-- Drag/Reposition canvas container -->
+              <div id="customizer-canvas-wrapper" class="preview-image-container flex items-center justify-center">
+                <!-- Placeholder text -->
+                <div id="customizer-placeholder" class="text-center p-4 space-y-2 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Click upload photo on the right panel</p>
+                </div>
+                <!-- Dynamic Image -->
+                <img id="customizer-preview-img" class="hidden w-full h-full object-cover origin-center" src="#" alt="Custom Photo Preview">
+              </div>
+            </div>
+          </div>
+
+          <!-- Position & zoom adjustments panel -->
+          <div class="w-full max-w-sm bg-slate-950/60 border border-slate-800/80 p-4 rounded-2xl flex flex-col space-y-3">
+            <div class="flex items-center justify-between">
+              <!-- Zoom slider -->
+              <div class="flex-grow mr-6 space-y-1">
+                <div class="flex items-center justify-between text-[10px] text-gray-400 font-semibold uppercase">
+                  <span>Zoom Image</span>
+                </div>
+                <div class="flex items-center space-x-2.5">
+                  <i class="fas fa-search-minus text-gray-500 text-xs"></i>
+                  <input type="range" id="customizer-zoom" min="1" max="4" step="0.05" value="1" class="flex-grow accent-[#D4AF37] h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+                  <i class="fas fa-search-plus text-gray-500 text-xs"></i>
+                </div>
+              </div>
+              
+              <!-- Rotate button -->
+              <button id="customizer-rotate-btn" class="bg-navy-800 hover:bg-[#D4AF37] text-white hover:text-[#0B1F3A] border border-slate-700/60 hover:border-[#D4AF37] w-12 h-12 rounded-xl flex items-center justify-center transition-all focus:outline-none" title="Rotate 90 degrees">
+                <i class="fas fa-rotate"></i>
+              </button>
+            </div>
+            <p class="text-[10px] text-gray-500 text-center"><i class="fas fa-arrows-alt mr-1"></i> Tip: Click and drag the photo directly inside the frame to adjust positioning.</p>
+          </div>
+        </div>
+
+        <!-- Right Side: Configuration Sidebar Options (5 cols) -->
+        <div class="lg:col-span-5 space-y-6" data-aos="fade-left">
+          
+          <!-- Product configurator box -->
+          <div class="bg-navy-900/60 border border-slate-800 p-6 rounded-3xl backdrop-blur-md space-y-6">
+            <h3 class="text-sm font-bold text-white uppercase tracking-widest border-b border-slate-800/80 pb-3">Frame Configuration</h3>
+            
+            <div class="space-y-4">
+              <!-- Category dropdown -->
+              <div class="space-y-1.5">
+                <label for="config-category" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">1. Select Frame Type</label>
+                <select id="config-category" class="w-full bg-slate-950 border border-slate-800 text-white text-xs rounded-xl p-3 focus:outline-none focus:border-[#D4AF37] cursor-pointer">
+                  <!-- dynamic options -->
+                </select>
+              </div>
+
+              <!-- Size selector -->
+              <div class="space-y-1.5">
+                <label for="config-size" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">2. Select Frame Size</label>
+                <select id="config-size" class="w-full bg-slate-950 border border-slate-800 text-white text-xs rounded-xl p-3 focus:outline-none focus:border-[#D4AF37] cursor-pointer">
+                  <!-- dynamic options -->
+                </select>
+              </div>
+
+              <!-- Orientation selector -->
+              <div class="space-y-1.5">
+                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">3. Orientation</span>
+                <div class="grid grid-cols-3 gap-3">
+                  <button data-orientation="vertical" class="orient-btn py-2.5 px-4 rounded-xl border border-slate-800 bg-slate-950/60 text-xs font-semibold text-gray-400 hover:text-white border-[#D4AF37] text-[#D4AF37] flex items-center justify-center space-x-1.5 transition-colors">
+                    <i class="fas fa-arrows-up-down text-[10px]"></i>
+                    <span>Portrait</span>
+                  </button>
+                  <button data-orientation="horizontal" class="orient-btn py-2.5 px-4 rounded-xl border border-slate-800 bg-slate-950/60 text-xs font-semibold text-gray-400 hover:text-white flex items-center justify-center space-x-1.5 transition-colors">
+                    <i class="fas fa-arrows-left-right text-[10px]"></i>
+                    <span>Landscape</span>
+                  </button>
+                  <button data-orientation="square" class="orient-btn py-2.5 px-4 rounded-xl border border-slate-800 bg-slate-950/60 text-xs font-semibold text-gray-400 hover:text-white flex items-center justify-center space-x-1.5 transition-colors">
+                    <i class="fas fa-square text-[10px]"></i>
+                    <span>Square</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- LED Tones Options (Shown dynamically) -->
+              <div id="led-options-panel" class="space-y-1.5 hidden">
+                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">4. LED Light Tone</span>
+                <div class="grid grid-cols-4 gap-2">
+                  <button data-tone="warm" class="led-tone-btn py-2 rounded-xl border border-[#D4AF37] text-[#D4AF37] bg-slate-950/60 text-[10px] font-bold flex flex-col items-center justify-center transition-colors">
+                    <span class="w-3.5 h-3.5 rounded-full bg-yellow-400 mb-1 ring-2 ring-yellow-400/20"></span>
+                    <span>Warm Yellow</span>
+                  </button>
+                  <button data-tone="white" class="led-tone-btn py-2 rounded-xl border border-slate-800 bg-slate-950/60 text-[10px] font-bold text-gray-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <span class="w-3.5 h-3.5 rounded-full bg-white mb-1 ring-2 ring-white/20"></span>
+                    <span>Cool White</span>
+                  </button>
+                  <button data-tone="cool" class="led-tone-btn py-2 rounded-xl border border-slate-800 bg-slate-950/60 text-[10px] font-bold text-gray-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <span class="w-3.5 h-3.5 rounded-full bg-blue-300 mb-1 ring-2 ring-blue-300/20"></span>
+                    <span>Ice Blue</span>
+                  </button>
+                  <button data-tone="off" class="led-tone-btn py-2 rounded-xl border border-slate-800 bg-slate-950/60 text-[10px] font-bold text-gray-400 hover:text-white flex flex-col items-center justify-center transition-colors">
+                    <span class="w-3.5 h-3.5 rounded-full bg-zinc-800 mb-1"></span>
+                    <span>Lights Off</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Drag Zone Image Upload -->
+              <div class="space-y-1.5 pt-2">
+                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">5. Upload Your Image</span>
+                <div id="customizer-drop-zone" class="border-2 border-dashed border-slate-800 hover:border-[#D4AF37] bg-slate-950/40 p-5 rounded-2xl text-center cursor-pointer transition-all duration-300 group">
+                  <input type="file" id="customizer-file-input" accept="image/*" class="hidden">
+                  <div class="space-y-1.5 pointer-events-none">
+                    <i class="fas fa-cloud-upload-alt text-xl text-gray-500 group-hover:text-[#D4AF37] transition-colors"></i>
+                    <p class="text-[11px] font-semibold">Drag and drop or <span class="text-[#D4AF37]">browse files</span></p>
+                    <p class="text-[9px] text-gray-500">JPG, PNG, WebP up to 10MB</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Purchase action box -->
+          <div class="bg-navy-900/60 border border-slate-800 p-6 rounded-3xl backdrop-blur-md space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+              <!-- Quantity selection -->
+              <div class="space-y-1">
+                <span class="text-[9px] text-gray-500 uppercase block font-semibold">Quantity</span>
+                <div class="flex items-center space-x-3 bg-slate-950 rounded-lg border border-slate-800 px-3 py-1.5">
+                  <button id="qty-minus" class="text-gray-400 hover:text-white font-bold text-sm focus:outline-none">-</button>
+                  <span id="qty-val" class="text-xs text-white font-bold px-1.5">1</span>
+                  <button id="qty-plus" class="text-gray-400 hover:text-white font-bold text-sm focus:outline-none">+</button>
+                </div>
+              </div>
+              
+              <!-- Total summary labels -->
+              <div class="text-right space-y-0.5">
+                <span class="text-[9px] text-gray-500 uppercase block font-semibold">Total Price</span>
+                <span id="summary-unit-price" class="text-[10px] text-gray-400 line-through mr-1.5 hidden">₹0</span>
+                <span id="summary-total-price" class="text-2xl font-black text-[#D4AF37]">₹399</span>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="grid grid-cols-2 gap-4">
+              <button id="config-add-cart" class="w-full bg-[#13294B] border border-slate-700/80 hover:bg-[#1E3A5F] text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow transition-all duration-300">
+                Add to Cart <i class="fas fa-shopping-cart ml-1.5 text-[10px]"></i>
+              </button>
+              <button id="config-buy-now" class="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3CD46] hover:from-[#F3CD46] hover:to-[#D4AF37] text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg hover:shadow-yellow-500/10 transition-all duration-300">
+                Buy Now <i class="fas fa-bolt ml-1.5 text-[10px]"></i>
+              </button>
+            </div>
+
+            <p class="text-[9px] text-gray-500 text-center leading-relaxed"><i class="fas fa-info-circle mr-1"></i> Standard lifetime print shine guarantee. Free replacement in case of delivery breaks.</p>
+          </div>
+
+          <!-- Shipping Zip check box -->
+          <div class="bg-navy-900/60 border border-slate-800 p-6 rounded-3xl backdrop-blur-md space-y-4">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Check Delivery PIN Code</h4>
+            <div class="flex items-center space-x-2 bg-slate-950 rounded-xl border border-slate-800 p-1.5">
+              <input type="text" id="zip-check-input" placeholder="Enter 6-digit Indian PIN Code" class="bg-transparent text-white text-xs px-3 focus:outline-none w-full">
+              <button id="zip-check-btn" class="bg-[#13294B] hover:bg-[#D4AF37] hover:text-[#0B1F3A] text-white font-bold text-xs py-2 px-4 rounded-lg transition-colors whitespace-nowrap">Check</button>
+            </div>
+            <div id="zip-check-output" class="hidden"></div>
+          </div>
+
+          <!-- Product description info tabs -->
+          <div class="bg-navy-900/60 border border-slate-800 p-6 rounded-3xl backdrop-blur-md space-y-4">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Product Specifications</h4>
+            <p id="config-desc" class="text-[11px] text-gray-400 leading-relaxed"></p>
+            <ul id="config-features" class="text-[10px] text-gray-400 space-y-2 pt-2 border-t border-slate-800/80">
+              <!-- dynamic specs list -->
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer (Injected dynamically) -->
+  <footer id="global-footer"></footer>
+
+  <!-- Floating WhatsApp button -->
+  <button id="whatsapp-floating-btn" class="fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none group">
+    <i class="fab fa-whatsapp text-3xl"></i>
+  </button>
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+
+  <!-- Global App JS -->
+  <script src="js/app.js"></script>
+  
+  <!-- Catalog references for database access in customizer -->
+  <script src="js/catalog.js"></script>
+
+  <!-- Customizer UI Engine -->
+  <script src="js/customizer.js"></script>
+</body>
+</html>

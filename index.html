@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Customizable premium photo frames, acrylic frames, and glowing LED gifts by VD CREATION. Design your own photo frame with live preview.">
+  <title>Premium Customizable Photo Frames & Personalized Gifts | VD CREATION</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050e1a',
+              900: '#0B1F3A',
+              800: '#13294B',
+              700: '#1E3A5F',
+              600: '#2A4D7C',
+            },
+            gold: {
+              DEFAULT: '#D4AF37',
+              hover: '#F3CD46'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-navy-950 text-white min-h-screen flex flex-col">
+
+  <!-- Sticky Navbar (Injected dynamically) -->
+  <header id="global-header"></header>
+
+  <!-- Main Content -->
+  <main class="flex-grow">
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center py-20 overflow-hidden bg-navy-950">
+      <!-- Background Video -->
+      <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-20">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-carpenter-sanding-a-wooden-board-41682-large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- Dark overlay to ensure text contrast -->
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-950/70 via-navy-950/95 to-navy-950 z-0"></div>
+
+      <!-- Background Ambient Glows -->
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#D4AF37]/5 rounded-full filter blur-[100px] pointer-events-none animate-pulse z-0"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+      
+      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-8 text-center lg:text-left" data-aos="fade-right">
+          <div class="inline-flex items-center space-x-2 bg-navy-800/80 border border-slate-700/60 rounded-full py-1.5 px-4 text-xs font-semibold tracking-wider text-[#D4AF37]">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
+            <span>Premium Handcrafted Photo Gifts</span>
+          </div>
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+            Preserve Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F3CD46] to-white">Precious Memories</span> in Luxury Frames
+          </h1>
+          <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Make your home look modern and premium, or gift something unforgettable. Custom glossy Acrylics, glowing warm LEDs, and elegant matte frames designed by you in real-time.
+          </p>
+          
+          <!-- Trust Stats -->
+          <div class="grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0 pt-4 border-t border-slate-800/80">
+            <div>
+              <span class="block text-2xl md:text-3xl font-extrabold text-[#D4AF37]">15K+</span>
+              <span class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">Orders Delivered</span>
+            </div>
+            <div>
+              <span class="block text-2xl md:text-3xl font-extrabold text-white">4.9★</span>
+              <span class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">Customer Rating</span>
+            </div>
+            <div>
+              <span class="block text-2xl md:text-3xl font-extrabold text-white">100%</span>
+              <span class="text-[10px] uppercase tracking-wider text-gray-400 font-medium">Love Guarantee</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="customize.html" class="w-full sm:w-auto bg-gradient-to-r from-[#D4AF37] to-[#F3CD46] text-[#0B1F3A] font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-[#D4AF37]/20 transform hover:-translate-y-0.5 transition-all duration-300 text-center text-sm uppercase tracking-wider">
+              Create Your Frame <i class="fas fa-magic ml-2"></i>
+            </a>
+            <a href="services.html" class="w-full sm:w-auto border border-slate-600 hover:border-white text-white hover:bg-white/5 font-semibold py-4 px-8 rounded-full transition-all duration-300 text-center text-sm">
+              Explore Frame Catalog
+            </a>
+          </div>
+        </div>
+        
+        <!-- Floating Collages -->
+        <div class="lg:col-span-5 relative h-[450px] w-full flex items-center justify-center" data-aos="fade-left">
+          <!-- Frame 1: LED glowing back -->
+          <div class="absolute w-[240px] h-[300px] rounded-lg overflow-hidden transform -rotate-6 -translate-x-20 -translate-y-8 bg-zinc-900 border border-slate-700 shadow-2xl transition-all duration-500 hover:rotate-0 hover:z-20 hover:scale-105 group">
+            <div class="absolute inset-0 bg-black/40 z-10 group-hover:opacity-0 transition-opacity"></div>
+            <img src="assets/led_frame.png" alt="Glowing LED Frame" class="w-full h-full object-cover">
+            <div class="absolute bottom-3 left-3 right-3 bg-navy-950/90 backdrop-blur border border-white/10 p-2 rounded text-center z-10">
+              <span class="text-[10px] font-bold uppercase text-[#D4AF37]">Glowing LED Frames</span>
+            </div>
+          </div>
+          <!-- Frame 2: Acrylic Wall (Top Right Front) -->
+          <div class="absolute w-[260px] h-[200px] rounded-lg overflow-hidden transform rotate-6 translate-x-12 translate-y-[-100px] bg-slate-900 border border-white/20 shadow-2xl transition-all duration-500 hover:rotate-0 hover:z-20 hover:scale-105 group">
+            <div class="absolute inset-0 bg-black/30 z-10 group-hover:opacity-0 transition-opacity"></div>
+            <img src="assets/acrylic_frame.png" alt="Premium Acrylic Frame" class="w-full h-full object-cover">
+            <div class="absolute bottom-3 left-3 right-3 bg-navy-950/90 backdrop-blur border border-white/10 p-2 rounded text-center z-10">
+              <span class="text-[10px] font-bold uppercase text-[#D4AF37]">Glossy Acrylic Wall Art</span>
+            </div>
+          </div>
+          <!-- Frame 3: Matte Black (Bottom Right Front) -->
+          <div class="absolute w-[220px] h-[260px] rounded-lg overflow-hidden transform rotate-[-2deg] translate-x-16 translate-y-[80px] bg-[#141416] border-8 border-[#141416] shadow-2xl transition-all duration-500 hover:rotate-0 hover:z-20 hover:scale-105 group">
+            <div class="absolute inset-0 bg-black/30 z-10 group-hover:opacity-0 transition-opacity"></div>
+            <img src="assets/matte_frame.png" alt="Matte Frame" class="w-full h-full object-cover">
+            <div class="absolute bottom-3 left-3 right-3 bg-navy-950/90 backdrop-blur border border-white/10 p-2 rounded text-center z-10">
+              <span class="text-[10px] font-bold uppercase text-[#D4AF37]">Zink Mate Dark Frames</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 px-6 md:px-12 bg-navy-900 relative">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-xl mx-auto space-y-4" data-aos="fade-up">
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Create Your Frame In <span class="text-[#D4AF37]">5 Easy Steps</span></h2>
+          <p class="text-gray-400 text-xs md:text-sm">We've designed a simple, interactive process to make sure your custom memories fit perfectly.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <!-- Step 1 -->
+          <div class="bg-navy-950/50 border border-slate-800 p-6 rounded-2xl relative text-center space-y-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-12 h-12 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] font-bold flex items-center justify-center mx-auto text-lg border border-[#D4AF37]/30">1</div>
+            <h3 class="text-sm font-bold text-white">Choose Frame Type</h3>
+            <p class="text-[11px] text-gray-400 leading-relaxed">Select from Acrylic, Zink Mate, Classic Wood, or Glowing LED Frames.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="bg-navy-950/50 border border-slate-800 p-6 rounded-2xl relative text-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-12 h-12 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] font-bold flex items-center justify-center mx-auto text-lg border border-[#D4AF37]/30">2</div>
+            <h3 class="text-sm font-bold text-white">Select Size</h3>
+            <p class="text-[11px] text-gray-400 leading-relaxed">Choose from multiple dimensions fitting standard frames to large wall designs.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="bg-navy-950/50 border border-slate-800 p-6 rounded-2xl relative text-center space-y-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-12 h-12 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] font-bold flex items-center justify-center mx-auto text-lg border border-[#D4AF37]/30">3</div>
+            <h3 class="text-sm font-bold text-white">Upload Your Photo</h3>
+            <p class="text-[11px] text-gray-400 leading-relaxed">Drag and drop your image directly. We support high-res JPEG, PNG, and WebP.</p>
+          </div>
+          <!-- Step 4 -->
+          <div class="bg-navy-950/50 border border-slate-800 p-6 rounded-2xl relative text-center space-y-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="w-12 h-12 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] font-bold flex items-center justify-center mx-auto text-lg border border-[#D4AF37]/30">4</div>
+            <h3 class="text-sm font-bold text-white">Preview & Adjust</h3>
+            <p class="text-[11px] text-gray-400 leading-relaxed">Pan, zoom, crop, and verify design fit inside the frame in real time.</p>
+          </div>
+          <!-- Step 5 -->
+          <div class="bg-navy-950/50 border border-slate-800 p-6 rounded-2xl relative text-center space-y-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="w-12 h-12 rounded-full bg-green-500/10 text-green-400 font-bold flex items-center justify-center mx-auto text-lg border border-green-500/30">5</div>
+            <h3 class="text-sm font-bold text-white">Place Your Order</h3>
+            <p class="text-[11px] text-gray-400 leading-relaxed">Checkout securely. We manufacture, package safely, and ship to your doorstep.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Homepage Interactive Preloader Widget -->
+    <section class="py-20 px-6 md:px-12 bg-navy-950 relative">
+      <div class="max-w-5xl mx-auto space-y-10">
+        <div class="text-center max-w-xl mx-auto space-y-4" data-aos="fade-up">
+          <span class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Try It Now</span>
+          <h2 class="text-3xl font-extrabold tracking-tight">Interactive Photo Previewer</h2>
+          <p class="text-gray-400 text-xs md:text-sm">Drop a photo here to test how it looks inside our premium Acrylic frame instantly!</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-navy-900/60 p-6 md:p-10 rounded-3xl border border-slate-800 backdrop-blur-md" data-aos="fade-up">
+          <!-- Widget Left: Preview Canvas -->
+          <div class="lg:col-span-6 flex flex-col items-center">
+            <!-- Simulated Acrylic frame wrapper -->
+            <div class="w-[300px] h-[300px] p-6 bg-slate-950/40 rounded-lg flex items-center justify-center">
+              <div id="homepage-frame-preview" class="w-full h-full frame-acrylic flex items-center justify-center overflow-hidden">
+                <!-- Mounting Studs -->
+                <div class="acrylic-stud stud-tl"></div>
+                <div class="acrylic-stud stud-tr"></div>
+                <div class="acrylic-stud stud-bl"></div>
+                <div class="acrylic-stud stud-br"></div>
+                
+                <!-- Display Canvas -->
+                <div id="homepage-canvas-wrapper" class="preview-image-container flex items-center justify-center">
+                  <div id="widget-upload-placeholder" class="text-center p-4 space-y-2 pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Your Photo will display here</p>
+                  </div>
+                  <img id="widget-preview-img" class="hidden w-full h-full object-cover" src="#" alt="Preview photo">
+                </div>
+              </div>
+            </div>
+
+            <!-- Position Adjuster Controls -->
+            <div id="widget-controls" class="hidden mt-4 w-full max-w-xs bg-slate-950/80 p-3 rounded-lg border border-slate-800 space-y-2 scale-90">
+              <div class="flex items-center justify-between text-[10px] text-gray-400">
+                <span>Drag photo to adjust position</span>
+                <span>Zoom</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-search-minus text-gray-500 text-xs"></i>
+                <input type="range" id="widget-zoom" min="1" max="3" step="0.05" value="1" class="flex-grow accent-[#D4AF37] h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+                <i class="fas fa-search-plus text-gray-500 text-xs"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Widget Right: Controls/Action -->
+          <div class="lg:col-span-6 space-y-6">
+            <h3 class="text-lg font-bold text-white">Upload Your Memory</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Upload any picture of family, friends, pets, or travels. Our interactive system fits the image into the dimensions and renders reflections.
+            </p>
+
+            <!-- File Drag Zone -->
+            <div id="widget-drop-zone" class="border-2 border-dashed border-slate-700 hover:border-[#D4AF37] bg-slate-950/40 p-6 rounded-2xl text-center cursor-pointer transition-all duration-300 group">
+              <input type="file" id="widget-file-input" accept="image/*" class="hidden">
+              <div class="space-y-2 pointer-events-none">
+                <i class="fas fa-cloud-upload-alt text-2xl text-gray-500 group-hover:text-[#D4AF37] transition-colors"></i>
+                <p class="text-xs font-semibold">Drag & drop or <span class="text-[#D4AF37]">browse files</span></p>
+                <p class="text-[10px] text-gray-500">Supports JPG, PNG, WebP up to 10MB</p>
+              </div>
+            </div>
+
+            <!-- Next steps trigger -->
+            <button id="widget-submit-btn" disabled class="w-full bg-[#D4AF37] opacity-50 cursor-not-allowed hover:bg-[#F3CD46] text-[#0B1F3A] font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all duration-300 text-xs uppercase tracking-wider flex items-center justify-center space-x-2">
+              <span>Go to Full Customizer</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Categories -->
+    <section class="py-20 px-6 md:px-12 bg-navy-900">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-xl mx-auto space-y-4" data-aos="fade-up">
+          <span class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Premium Materials</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Our Frame Collections</h2>
+          <p class="text-gray-400 text-xs md:text-sm">Each frame category is manufactured with top-tier components, precise diamond-cutting, and safe packing techniques.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Acrylic Frame -->
+          <div class="bg-navy-950/60 border border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-yellow-500/5 group hover:border-[#D4AF37]/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+            <div class="h-60 overflow-hidden relative">
+              <img src="assets/acrylic_frame.png" alt="Acrylic Frames" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-4 left-4 bg-[#D4AF37] text-[#0B1F3A] text-[9px] font-bold py-1 px-3 rounded-full uppercase tracking-wider">Glossy Finish</span>
+            </div>
+            <div class="p-6 space-y-4">
+              <h3 class="text-lg font-bold">Acrylic Wall Photos</h3>
+              <p class="text-xs text-gray-400 leading-relaxed">Frameless crystal-clear acrylic printing. Diamond-polished edges providing a floating premium glass finish.</p>
+              <div class="text-xs text-gray-400 flex flex-wrap gap-2">
+                <span class="bg-slate-900 px-2.5 py-1 rounded">6"x9"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">8"x12"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">10"x15"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">12"x18"</span>
+              </div>
+              <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                <div>
+                  <span class="text-[9px] text-gray-400 uppercase block">Starting at</span>
+                  <span class="text-base font-bold text-[#D4AF37]">₹399</span>
+                </div>
+                <a href="customize.html?category=acrylic" class="bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-[#0B1F3A] font-bold text-xs py-2.5 px-4 rounded-lg transition-all duration-200">Customize</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zink Mate Frame -->
+          <div class="bg-navy-950/60 border border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-yellow-500/5 group hover:border-[#D4AF37]/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+            <div class="h-60 overflow-hidden relative">
+              <img src="assets/matte_frame.png" alt="Matte Frames" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-4 left-4 bg-[#D4AF37] text-[#0B1F3A] text-[9px] font-bold py-1 px-3 rounded-full uppercase tracking-wider">Matte Finish</span>
+            </div>
+            <div class="p-6 space-y-4">
+              <h3 class="text-lg font-bold">Zink Mate Frames</h3>
+              <p class="text-xs text-gray-400 leading-relaxed">Contemporary dark borders with smooth matte coating. Anti-glare and matches perfectly with modern home decors.</p>
+              <div class="text-xs text-gray-400 flex flex-wrap gap-2">
+                <span class="bg-slate-900 px-2.5 py-1 rounded">8"x12"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">12"x18"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">18"x24"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">24"x36"</span>
+              </div>
+              <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                <div>
+                  <span class="text-[9px] text-gray-400 uppercase block">Starting at</span>
+                  <span class="text-base font-bold text-[#D4AF37]">₹449</span>
+                </div>
+                <a href="customize.html?category=matte" class="bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-[#0B1F3A] font-bold text-xs py-2.5 px-4 rounded-lg transition-all duration-200">Customize</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LED Frame -->
+          <div class="bg-navy-950/60 border border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-yellow-500/5 group hover:border-[#D4AF37]/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+            <div class="h-60 overflow-hidden relative">
+              <img src="assets/led_frame.png" alt="LED Frames" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-4 left-4 bg-[#D4AF37] text-[#0B1F3A] text-[9px] font-bold py-1 px-3 rounded-full uppercase tracking-wider">Glowing LED</span>
+            </div>
+            <div class="p-6 space-y-4">
+              <h3 class="text-lg font-bold">Glowing LED Frames</h3>
+              <p class="text-xs text-gray-400 leading-relaxed">Illuminated wooden frame designs. Soft, warm warm backlights casting a beautiful aura over family and couple portraits.</p>
+              <div class="text-xs text-gray-400 flex flex-wrap gap-2">
+                <span class="bg-slate-900 px-2.5 py-1 rounded">6"x9"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">8"x12"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">10"x15"</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">12"x18"</span>
+              </div>
+              <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                <div>
+                  <span class="text-[9px] text-gray-400 uppercase block">Starting at</span>
+                  <span class="text-base font-bold text-[#D4AF37]">₹699</span>
+                </div>
+                <a href="customize.html?category=led" class="bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-[#0B1F3A] font-bold text-xs py-2.5 px-4 rounded-lg transition-all duration-200">Customize</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Personalized Gifts -->
+          <div class="bg-navy-950/60 border border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-yellow-500/5 group hover:border-[#D4AF37]/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
+            <div class="h-60 overflow-hidden relative">
+              <img src="assets/gift_items.png" alt="Personalized Gifts" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-4 left-4 bg-[#D4AF37] text-[#0B1F3A] text-[9px] font-bold py-1 px-3 rounded-full uppercase tracking-wider">Emotional Gifts</span>
+            </div>
+            <div class="p-6 space-y-4">
+              <h3 class="text-lg font-bold">Personalized Gifts</h3>
+              <p class="text-xs text-gray-400 leading-relaxed">Unique customized products including keychains, fridge magnets, luggage tags, and mini desktop stands.</p>
+              <div class="text-xs text-gray-400 flex flex-wrap gap-2">
+                <span class="bg-slate-900 px-2.5 py-1 rounded">Keychains</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">Fridge Magnets</span>
+                <span class="bg-slate-900 px-2.5 py-1 rounded">Mini Galleries</span>
+              </div>
+              <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                <div>
+                  <span class="text-[9px] text-gray-400 uppercase block">Starting at</span>
+                  <span class="text-base font-bold text-[#D4AF37]">₹99</span>
+                </div>
+                <a href="services.html?category=gifts" class="bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-[#0B1F3A] font-bold text-xs py-2.5 px-4 rounded-lg transition-all duration-200">Shop Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 px-6 md:px-12 bg-navy-950 relative">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-xl mx-auto space-y-4" data-aos="fade-up">
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Why Choose <span class="text-[#D4AF37]">VD CREATION</span></h2>
+          <p class="text-gray-400 text-xs md:text-sm">We combine emotional values with professional grade manufacturing to deliver smiles.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="bg-navy-900/40 border border-slate-800 p-8 rounded-3xl space-y-4 hover:border-yellow-500/30 transition-colors" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37]">
+              <i class="fas fa-gem text-xl"></i>
+            </div>
+            <h3 class="text-base font-bold">Premium Quality</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">We use high-grade synthetic woods, crystal clear plexiglass/acrylic, and energy-saving copper led tracks.</p>
+          </div>
+
+          <div class="bg-navy-900/40 border border-slate-800 p-8 rounded-3xl space-y-4 hover:border-yellow-500/30 transition-colors" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37]">
+              <i class="fas fa-truck-fast text-xl"></i>
+            </div>
+            <h3 class="text-base font-bold">Express Shipping</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Fast order processing and priority tie-ups with premium couriers ensuring safety and speed.</p>
+          </div>
+
+          <div class="bg-navy-900/40 border border-slate-800 p-8 rounded-3xl space-y-4 hover:border-yellow-500/30 transition-colors" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37]">
+              <i class="fas fa-box-open text-xl"></i>
+            </div>
+            <h3 class="text-base font-bold">Secure Damage-Free Packing</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Multiple layered bubble wrapping, thermocol casings, and hard corrugated boxes to avoid transit breaks.</p>
+          </div>
+
+          <div class="bg-navy-900/40 border border-slate-800 p-8 rounded-3xl space-y-4 hover:border-yellow-500/30 transition-colors" data-aos="fade-up" data-aos-delay="400">
+            <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37]">
+              <i class="fas fa-heart text-xl"></i>
+            </div>
+            <h3 class="text-base font-bold">Emotionally Crafted</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">Each design is reviewed by a designer for cropping, size fittings, and quality before printing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 px-6 md:px-12 bg-navy-900">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-xl mx-auto space-y-4" data-aos="fade-up">
+          <span class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Happy Customers</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Stories of Love & Gifts</h2>
+          <p class="text-gray-400 text-xs md:text-sm">Read how VD CREATION custom frames helped decorate homes and celebrate milestones.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Review 1 -->
+          <div class="bg-navy-950/60 border border-slate-800/80 p-8 rounded-2xl space-y-4 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+            <div class="space-y-3">
+              <div class="flex text-[#D4AF37] space-x-1 text-xs">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="text-xs text-gray-300 italic leading-relaxed">
+                "Ordered a glowing LED photo frame for my parents' anniversary. The warm light makes the photo look so magical in their room. Uploading and centering the image was super easy!"
+              </p>
+            </div>
+            <div class="flex items-center space-x-3 pt-4 border-t border-slate-800">
+              <div class="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] font-bold text-sm">R</div>
+              <div>
+                <h4 class="text-xs font-bold text-white">Rohit Sharma</h4>
+                <p class="text-[10px] text-gray-500">Verified Buyer, Mumbai</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="bg-navy-950/60 border border-slate-800/80 p-8 rounded-2xl space-y-4 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+            <div class="space-y-3">
+              <div class="flex text-[#D4AF37] space-x-1 text-xs">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="text-xs text-gray-300 italic leading-relaxed">
+                "I am extremely picky about photo prints, but VD Creation's Acrylic Wall Photo blew me away. The resolution is crisp, and the polished glossy borders look so luxurious. Highly recommended!"
+              </p>
+            </div>
+            <div class="flex items-center space-x-3 pt-4 border-t border-slate-800">
+              <div class="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] font-bold text-sm">P</div>
+              <div>
+                <h4 class="text-xs font-bold text-white">Priya Patel</h4>
+                <p class="text-[10px] text-gray-500">Verified Buyer, Delhi</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="bg-navy-950/60 border border-slate-800/80 p-8 rounded-2xl space-y-4 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+            <div class="space-y-3">
+              <div class="flex text-[#D4AF37] space-x-1 text-xs">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="text-xs text-gray-300 italic leading-relaxed">
+                "The customized acrylic magnets and keychains are perfect gift items! I ordered 10 keychains for a family gathering and everyone loved the finish. The package was extremely secure!"
+              </p>
+            </div>
+            <div class="flex items-center space-x-3 pt-4 border-t border-slate-800">
+              <div class="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] font-bold text-sm">A</div>
+              <div>
+                <h4 class="text-xs font-bold text-white">Aniket Verma</h4>
+                <p class="text-[10px] text-gray-500">Verified Buyer, Pune</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 px-6 md:px-12 bg-navy-950 relative">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div class="text-center space-y-4" data-aos="fade-up">
+          <h2 class="text-3xl font-extrabold tracking-tight">Frequently Asked Questions</h2>
+          <p class="text-gray-400 text-xs md:text-sm font-medium">Answers to common queries regarding customization, upload sizes, shipping, and packaging.</p>
+        </div>
+
+        <div class="space-y-4" data-aos="fade-up">
+          <!-- FAQ 1 -->
+          <div class="bg-navy-900/60 border border-slate-800 rounded-xl overflow-hidden">
+            <button onclick="toggleFAQ(this)" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-xs md:text-sm hover:text-[#D4AF37] transition-colors focus:outline-none">
+              <span>What resolution photo should I upload for customization?</span>
+              <i class="fas fa-plus transition-transform duration-300"></i>
+            </button>
+            <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 border-t border-slate-800/80 text-xs text-gray-400 leading-relaxed">
+                For best results, we recommend uploading photos captured in good lighting with at least 150-300 DPI resolution. Standard mobile camera shots (above 4MB) work excellently. Our expert design editors also manually check every photo for print readiness.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="bg-navy-900/60 border border-slate-800 rounded-xl overflow-hidden">
+            <button onclick="toggleFAQ(this)" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-xs md:text-sm hover:text-[#D4AF37] transition-colors focus:outline-none">
+              <span>How does the LED glow frame function?</span>
+              <i class="fas fa-plus transition-transform duration-300"></i>
+            </button>
+            <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 border-t border-slate-800/80 text-xs text-gray-400 leading-relaxed">
+                Our LED frames are equipped with premium glowing warm yellow or cool white LED light tracks lined inside the wooden support casing. It comes with a 1.5-meter USB cable which can be connected to any phone charger adapter, power bank, or laptop.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="bg-navy-900/60 border border-slate-800 rounded-xl overflow-hidden">
+            <button onclick="toggleFAQ(this)" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-xs md:text-sm hover:text-[#D4AF37] transition-colors focus:outline-none">
+              <span>What if my photo frame breaks during delivery?</span>
+              <i class="fas fa-plus transition-transform duration-300"></i>
+            </button>
+            <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 border-t border-slate-800/80 text-xs text-gray-400 leading-relaxed">
+                We pack all frames inside multilayer high-density bubble sheets, custom thermocol molds, and high-strength 5-ply cartons. However, in the rare event of transit damage, we offer a **100% Free Replacement**. Just share a short unboxing video with our support via WhatsApp within 24 hours of delivery.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="bg-navy-900/60 border border-slate-800 rounded-xl overflow-hidden">
+            <button onclick="toggleFAQ(this)" class="w-full py-4 px-6 text-left flex items-center justify-between font-bold text-xs md:text-sm hover:text-[#D4AF37] transition-colors focus:outline-none">
+              <span>How long does shipping take?</span>
+              <i class="fas fa-plus transition-transform duration-300"></i>
+            </button>
+            <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 border-t border-slate-800/80 text-xs text-gray-400 leading-relaxed">
+                Since all items are custom-printed and handmade, production takes 1-2 business days. Shipping usually takes 3-5 business days depending on your location. Express delivery is available for metropolitan areas.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Showcase -->
+    <section class="py-20 px-6 md:px-12 bg-navy-900">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-xl mx-auto space-y-4" data-aos="fade-up">
+          <span class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Inspiration</span>
+          <h2 class="text-3xl font-extrabold tracking-tight">VD Creations in Homes</h2>
+          <p class="text-gray-400 text-xs md:text-sm">Explore how our customers styled their walls with custom acrylic and wood displays.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4" data-aos="fade-up">
+          <div class="h-48 md:h-64 rounded-xl overflow-hidden relative group">
+            <img src="assets/hero_banner.png" alt="Living room decor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fab fa-instagram text-2xl text-white"></i></div>
+          </div>
+          <div class="h-48 md:h-64 rounded-xl overflow-hidden relative group">
+            <img src="assets/led_frame.png" alt="Bedside table decor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fab fa-instagram text-2xl text-white"></i></div>
+          </div>
+          <div class="h-48 md:h-64 rounded-xl overflow-hidden relative group">
+            <img src="assets/acrylic_frame.png" alt="Dining room wall decor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fab fa-instagram text-2xl text-white"></i></div>
+          </div>
+          <div class="h-48 md:h-64 rounded-xl overflow-hidden relative group">
+            <img src="assets/matte_frame.png" alt="Staircase wall decor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fab fa-instagram text-2xl text-white"></i></div>
+          </div>
+          <div class="h-48 md:h-64 rounded-xl overflow-hidden relative group">
+            <img src="assets/gift_items.png" alt="Office desk workspace display" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><i class="fab fa-instagram text-2xl text-white"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 px-6 md:px-12 bg-navy-950 relative">
+      <div class="max-w-4xl mx-auto bg-gradient-to-r from-navy-900 to-navy-800 p-8 md:p-12 rounded-3xl border border-slate-800 text-center space-y-6 relative overflow-hidden" data-aos="fade-up">
+        <div class="absolute top-[-50px] right-[-50px] w-40 h-40 bg-[#D4AF37]/5 rounded-full filter blur-xl"></div>
+        
+        <h3 class="text-2xl md:text-3xl font-bold text-white">Get 10% Off Your First Order</h3>
+        <p class="text-xs text-gray-400 max-w-md mx-auto leading-relaxed">Subscribe to our newsletter to receive gift ideas, interior styling guides, and exclusive discount coupons.</p>
+        
+        <form onsubmit="event.preventDefault(); showNotification('Subscribed successfully! Use coupon VD10 at checkout.', 'success'); this.reset()" class="flex flex-col sm:flex-row max-w-md mx-auto gap-3">
+          <input type="email" required placeholder="Enter your email address" class="flex-grow bg-slate-950 border border-slate-800 text-white text-xs px-5 py-3.5 rounded-full focus:outline-none focus:border-[#D4AF37]">
+          <button type="submit" class="bg-[#D4AF37] hover:bg-[#F3CD46] text-[#0B1F3A] font-bold text-xs uppercase tracking-wider py-3.5 px-8 rounded-full transition-all duration-300">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer (Injected dynamically) -->
+  <footer id="global-footer"></footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top" class="fixed bottom-6 left-6 z-[90] w-12 h-12 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F3CD46] text-[#0B1F3A] shadow-lg flex items-center justify-center opacity-0 pointer-events-none translate-y-4 transition-all duration-300 focus:outline-none hover:scale-105">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Floating WhatsApp button -->
+  <button id="whatsapp-floating-btn" class="fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none group">
+    <i class="fab fa-whatsapp text-3xl"></i>
+    <span class="absolute right-16 bg-navy-950 border border-slate-700 text-white font-bold text-[10px] tracking-wider py-1.5 px-3.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl whitespace-nowrap">Need Help? Chat with us</span>
+  </button>
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    
+    // FAQ Toggle Accordion Function
+    function toggleFAQ(button) {
+      const parent = button.parentElement;
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      
+      // Close other FAQs if open (optional)
+      const allFAQs = document.querySelectorAll('.bg-navy-900\\/60');
+      allFAQs.forEach(faq => {
+        if (faq !== parent) {
+          const c = faq.querySelector('div');
+          const i = faq.querySelector('button i');
+          if (c) c.style.maxHeight = null;
+          if (i) {
+            i.classList.remove('fa-minus');
+            i.classList.add('fa-plus');
+          }
+        }
+      });
+
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.classList.remove('fa-minus');
+        icon.classList.add('fa-plus');
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+      }
+    }
+  </script>
+
+  <!-- Global App JS -->
+  <script src="js/app.js"></script>
+  
+  <!-- Mini customizer homepage logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dropZone = document.getElementById('widget-drop-zone');
+      const fileInput = document.getElementById('widget-file-input');
+      const previewImg = document.getElementById('widget-preview-img');
+      const placeholder = document.getElementById('widget-upload-placeholder');
+      const submitBtn = document.getElementById('widget-submit-btn');
+      const controls = document.getElementById('widget-controls');
+      const zoomSlider = document.getElementById('widget-zoom');
+      const canvasWrapper = document.getElementById('homepage-canvas-wrapper');
+      
+      let currentImageBase64 = '';
+      let isDragging = false;
+      let startX, startY, originX = 0, originY = 0;
+      let zoomScale = 1;
+
+      // Click to browse
+      dropZone.addEventListener('click', () => fileInput.click());
+
+      // File select
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleImageFile(file);
+      });
+
+      // Drag and drop event bindings
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          dropZone.classList.add('border-[#D4AF37]', 'bg-slate-900/60');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('border-[#D4AF37]', 'bg-slate-900/60');
+        }, false);
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const file = dt.files[0];
+        if (file) handleImageFile(file);
+      });
+
+      function handleImageFile(file) {
+        if (!file.type.startsWith('image/')) {
+          showNotification("Invalid file type. Please upload an image.", "error");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          currentImageBase64 = e.target.result;
+          previewImg.src = currentImageBase64;
+          previewImg.classList.remove('hidden');
+          placeholder.classList.add('hidden');
+          submitBtn.removeAttribute('disabled');
+          submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          controls.classList.remove('hidden');
+          
+          // Reset transform states
+          zoomScale = 1;
+          zoomSlider.value = 1;
+          originX = 0;
+          originY = 0;
+          applyTransform();
+          
+          showNotification("Image preloaded! Adjust zoom and positioning below.", "success");
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // Zoom slider event
+      zoomSlider.addEventListener('input', (e) => {
+        zoomScale = parseFloat(e.target.value);
+        applyTransform();
+      });
+
+      // Drag to reposition inside wrapper
+      canvasWrapper.addEventListener('mousedown', (e) => {
+        if (!currentImageBase64) return;
+        isDragging = true;
+        startX = e.clientX - originX;
+        startY = e.clientY - originY;
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      canvasWrapper.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        originX = e.clientX - startX;
+        originY = e.clientY - startY;
+        applyTransform();
+      });
+
+      // Touch events support for mobile panning
+      canvasWrapper.addEventListener('touchstart', (e) => {
+        if (!currentImageBase64) return;
+        isDragging = true;
+        const touch = e.touches[0];
+        startX = touch.clientX - originX;
+        startY = touch.clientY - originY;
+      });
+
+      canvasWrapper.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+
+      canvasWrapper.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        originX = touch.clientX - startX;
+        originY = touch.clientY - startY;
+        applyTransform();
+      });
+
+      function applyTransform() {
+        previewImg.style.transform = `translate(${originX}px, ${originY}px) scale(${zoomScale})`;
+      }
+
+      // Submit preloaded photo to main customizer
+      submitBtn.addEventListener('click', () => {
+        if (!currentImageBase64) return;
+        
+        // Save current customization snapshot to sessionStorage
+        const widgetConfig = {
+          preloadedImage: currentImageBase64,
+          zoom: zoomScale,
+          panX: originX,
+          panY: originY,
+          category: 'acrylic' // default preloaded category
+        };
+        
+        sessionStorage.setItem('vd_preloaded_widget', JSON.stringify(widgetConfig));
+        window.location.href = 'customize.html';
+      });
+    });
+  </script>
+</body>
+</html>

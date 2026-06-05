@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about VD CREATION. Our story, mission, and how we craft premium customizable acrylic and glowing LED photo frames with diamond-polished finishes.">
+  <title>About Us | VD CREATION - Handcrafting Your Memories</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050e1a',
+              900: '#0B1F3A',
+              800: '#13294B',
+              700: '#1E3A5F',
+              600: '#2A4D7C',
+            },
+            gold: {
+              DEFAULT: '#D4AF37',
+              hover: '#F3CD46'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-navy-950 text-white min-h-screen flex flex-col">
+
+  <!-- Sticky Navbar (Injected dynamically) -->
+  <header id="global-header"></header>
+
+  <!-- Main Content -->
+  <main class="flex-grow">
+    
+    <!-- Hero Title Header -->
+    <section class="py-20 bg-gradient-to-b from-navy-900 to-navy-950 text-center relative px-6">
+      <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('assets/hero_banner.png');"></div>
+      <div class="max-w-3xl mx-auto space-y-4 relative z-10" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Who We Are</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Our Story & Craft</h1>
+        <p class="text-gray-400 text-xs md:text-sm max-w-xl mx-auto leading-relaxed">
+          Crafting premium, customized photo frames designed to preserve your life's most precious memories.
+        </p>
+      </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="py-20 px-6 md:px-12 bg-navy-950">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Story Text -->
+        <div class="lg:col-span-7 space-y-6" data-aos="fade-right">
+          <span class="text-xs uppercase tracking-wider text-[#D4AF37] font-bold">Established with Passion</span>
+          <h2 class="text-3xl font-extrabold">The Heart Behind <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] to-[#F3CD46]">VD CREATION</span></h2>
+          <p class="text-xs md:text-sm text-gray-300 leading-relaxed">
+            At VD CREATION, we believe photos aren't just pixels or glossy prints; they are bookmarks of emotions, records of laughter, and tokens of relationships. What started as a small local framing workshop has grown into a premium digital platform providing custom memory spaces to thousands of families across the nation.
+          </p>
+          <p class="text-xs md:text-sm text-gray-300 leading-relaxed">
+            We realized that standard frames often mask the vibrancy of photos under cheap plastic slides. So, we pioneered premium acrylic float designs and custom glowing LED backlighting that breathes life and magic into portraits. Each frame we make is a collaboration between your personal story and our technical precision.
+          </p>
+          <div class="pt-4 border-t border-slate-800 flex items-center space-x-6">
+            <div>
+              <span class="text-xl font-bold text-white">100%</span>
+              <span class="text-[9px] uppercase tracking-wider text-gray-500 block">Handmade in India</span>
+            </div>
+            <div>
+              <span class="text-xl font-bold text-white">Zero</span>
+              <span class="text-[9px] uppercase tracking-wider text-gray-500 block">Plastic Margins</span>
+            </div>
+            <div>
+              <span class="text-xl font-bold text-[#D4AF37]">Premium</span>
+              <span class="text-[9px] uppercase tracking-wider text-gray-500 block">Quality Plexiglass</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Story Image Panel -->
+        <div class="lg:col-span-5 relative" data-aos="fade-left">
+          <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-navy-900 p-4">
+            <img src="assets/hero_banner.png" alt="Workspace craftsmanship" class="w-full rounded-2xl object-cover h-[350px]">
+          </div>
+          <!-- Decorative Badge -->
+          <div class="absolute bottom-6 left-6 bg-[#D4AF37] text-[#0B1F3A] font-bold text-xs p-4 rounded-2xl shadow-xl flex items-center space-x-3 transform -rotate-3">
+            <i class="fas fa-certificate text-xl"></i>
+            <div>
+              <span class="block uppercase tracking-wider text-[9px] font-semibold text-navy-900">Guaranteed</span>
+              <span class="text-[11px]">Lifetime Print Shine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 px-6 md:px-12 bg-navy-900/40 border-t border-slate-800/50">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-xl mx-auto space-y-4" data-aos="fade-up">
+          <span class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Our Edge</span>
+          <h2 class="text-3xl font-extrabold tracking-tight">Why Choose VD CREATION</h2>
+          <p class="text-gray-400 text-xs md:text-sm">We don't just frame pictures; we engineer timeless home decor designed to keep your memories fresh forever.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1: Premium Craftsmanship -->
+          <div class="bg-navy-900/60 border border-slate-800/80 p-8 rounded-3xl space-y-4 hover:border-[#D4AF37]/30 hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37] group-hover:scale-110 transition-transform duration-300">
+              <i class="fas fa-gem text-xl"></i>
+            </div>
+            <h3 class="text-base font-bold text-white group-hover:text-[#D4AF37] transition-colors">Premium Craftsmanship</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Diamond-polished acrylic sheets, seamless timber backing, and flicker-free copper LED circuitry built for durability and aesthetics.
+            </p>
+          </div>
+
+          <!-- Card 2: Live 3D Customizer -->
+          <div class="bg-navy-900/60 border border-slate-800/80 p-8 rounded-3xl space-y-4 hover:border-[#D4AF37]/30 hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37] group-hover:scale-110 transition-transform duration-300">
+              <i class="fas fa-sliders-h text-xl"></i>
+            </div>
+            <h3 class="text-base font-bold text-white group-hover:text-[#D4AF37] transition-colors">Live 3D Customizer</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Upload your memories and customize frames in real-time. Adjust cropping, choose styles, and see interactive mockups before you order.
+            </p>
+          </div>
+
+          <!-- Card 3: Transit Guarantee -->
+          <div class="bg-navy-900/60 border border-slate-800/80 p-8 rounded-3xl space-y-4 hover:border-[#D4AF37]/30 hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37] group-hover:scale-110 transition-transform duration-300">
+              <i class="fas fa-truck-moving text-xl"></i>
+            </div>
+            <h3 class="text-base font-bold text-white group-hover:text-[#D4AF37] transition-colors">Safe Transit Guarantee</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Our triple-layered custom foam casing ensures frames survive drops. If anything arrives broken, we ship a free replacement immediately.
+            </p>
+          </div>
+
+          <!-- Card 4: Lifetime Shine -->
+          <div class="bg-navy-900/60 border border-slate-800/80 p-8 rounded-3xl space-y-4 hover:border-[#D4AF37]/30 hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+            <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37] group-hover:scale-110 transition-transform duration-300">
+              <i class="fas fa-infinity text-xl"></i>
+            </div>
+            <h3 class="text-base font-bold text-white group-hover:text-[#D4AF37] transition-colors">Lifetime Print Shine</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Printed with professional-grade UV-resistant inks that won't fade, peel, or yellow when exposed to direct sunlight over the years.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Details Section -->
+    <section class="py-20 px-6 md:px-12 bg-navy-950 border-t border-slate-800/40 bg-gradient-to-b from-navy-950 to-navy-900/20">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Founder Image -->
+        <div class="lg:col-span-5" data-aos="fade-right">
+          <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-tr from-[#D4AF37] to-[#F3CD46] rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+            <div class="relative rounded-3xl overflow-hidden border border-slate-800 bg-navy-900 p-4">
+              <img src="assets/founders_profile.png" alt="Varun & Divya - Founders of VD CREATION" class="w-full rounded-2xl object-cover h-[400px]">
+            </div>
+          </div>
+        </div>
+
+        <!-- Founder Bio -->
+        <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
+          <span class="text-xs uppercase tracking-wider text-[#D4AF37] font-bold">Meet the Visionaries</span>
+          <h2 class="text-3xl font-extrabold">Crafting Memories: <br><span class="bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] to-[#F3CD46]">Varun & Divya Dev</span></h2>
+          <p class="text-xs uppercase text-gray-500 font-semibold tracking-widest -mt-2">Co-Founders & Creative Directors</p>
+          <p class="text-xs md:text-sm text-gray-300 leading-relaxed">
+            VD CREATION was born in 2021 from a simple realization: in an increasingly digital world, physical memories are becoming more precious than ever. Co-founders Varun (a structural framing designer) and Divya (a fine art print specialist) set out to merge digital printing technology with premium materials.
+          </p>
+          <p class="text-xs md:text-sm text-gray-300 leading-relaxed">
+            "We didn't want to make standard plastic photo frames that yellow and peel. We wanted to make frames that feel like sculptures, items you are proud to hang in your home or gift to people who matter. Every diamond-polished acrylic and handcrafted wooden casing goes through our personal validation before it is shipped."
+          </p>
+          
+          <!-- Social Profiles & Quote -->
+          <div class="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="italic text-xs text-gray-400 max-w-md">
+              "A frame shouldn't just border a photo; it should amplify the emotion that was captured."
+            </div>
+            <div class="flex space-x-3">
+              <a href="#" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 hover:bg-[#D4AF37] hover:text-[#0B1F3A] flex items-center justify-center transition-all duration-300"><i class="fab fa-linkedin-in text-xs"></i></a>
+              <a href="#" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 hover:bg-[#D4AF37] hover:text-[#0B1F3A] flex items-center justify-center transition-all duration-300"><i class="fab fa-twitter text-xs"></i></a>
+              <a href="#" class="w-9 h-9 rounded-full bg-slate-900 border border-slate-800 hover:bg-[#D4AF37] hover:text-[#0B1F3A] flex items-center justify-center transition-all duration-300"><i class="fab fa-instagram text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission, Vision & Trust -->
+    <section class="py-20 px-6 md:px-12 bg-navy-900">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1: Mission -->
+        <div class="bg-navy-950/60 border border-slate-800 p-8 rounded-3xl space-y-4 hover:border-yellow-500/20 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37]">
+            <i class="fas fa-bullseye text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold">Our Mission</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            To provide high-end, customizable framing options that allow people to easily upload, design, preview, and receive luxury photo gifts to celebrate and freeze memories.
+          </p>
+        </div>
+
+        <!-- Card 2: Vision -->
+        <div class="bg-navy-950/60 border border-slate-800 p-8 rounded-3xl space-y-4 hover:border-yellow-500/20 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37]">
+            <i class="fas fa-eye text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold">Our Vision</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            To become the premier destination for customized photo decors across the country, continuously innovating on back-lit LED tech, frameless acrylic panels, and green-friendly woods.
+          </p>
+        </div>
+
+        <!-- Card 3: Quality Guarantee -->
+        <div class="bg-navy-950/60 border border-slate-800 p-8 rounded-3xl space-y-4 hover:border-yellow-500/20 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-12 h-12 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37]">
+            <i class="fas fa-shield-alt text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold">Our Quality Promise</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            We perform rigorous double-stage quality checkups, offer free replacements for damage, use durable materials, and verify scaling proportions before printing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workspace & Materials Quality Section -->
+    <section class="py-20 px-6 md:px-12 bg-navy-950">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-xl mx-auto space-y-4" data-aos="fade-up">
+          <span class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">How it is made</span>
+          <h2 class="text-3xl font-extrabold tracking-tight">The Science of Crafting Memories</h2>
+          <p class="text-gray-400 text-xs md:text-sm">We combine state-of-the-art print engineering with careful carpentry to design long-lasting products.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Step 1 Detail -->
+          <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="h-48 rounded-2xl overflow-hidden border border-slate-800">
+              <img src="assets/acrylic_frame.png" alt="Acrylic Polishing" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-sm font-bold text-white">Diamond-Polished Acrylics</h3>
+            <p class="text-[11px] text-gray-400 leading-relaxed">
+              We use 3mm and 5mm thick optical-grade plexiglass which features superior transparency to standard glass. All edges are polished using a diamond tip for a sleek crystal glow.
+            </p>
+          </div>
+
+          <!-- Step 2 Detail -->
+          <div class="space-y-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="h-48 rounded-2xl overflow-hidden border border-slate-800">
+              <img src="assets/led_frame.png" alt="LED assembly" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-sm font-bold text-white">Copper LED Backlighting</h3>
+            <p class="text-[11px] text-gray-400 leading-relaxed">
+              Our glowing frames features high-density micro-LED strips soldered onto copper substrates. It emits a soft, flickering-free warm glow (3000K) that maximizes image contrast without glare.
+            </p>
+          </div>
+
+          <!-- Step 3 Detail -->
+          <div class="space-y-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="h-48 rounded-2xl overflow-hidden border border-slate-800">
+              <img src="assets/matte_frame.png" alt="Matte frame backboard" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-sm font-bold text-white">Zink Mate Coatings</h3>
+            <p class="text-[11px] text-gray-400 leading-relaxed">
+              Our matte-coated frames use Zink-infused polymer coatings that resist finger smudges, moisture, and dust. Ideal for high humidity environments and long exposures.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Emotional CTA -->
+    <section class="py-20 px-6 bg-gradient-to-t from-navy-900 to-navy-950 text-center relative overflow-hidden">
+      <div class="max-w-3xl mx-auto space-y-6 relative z-10" data-aos="zoom-in">
+        <h2 class="text-2xl md:text-3xl font-bold">Ready to design your own photo masterpiece?</h2>
+        <p class="text-xs text-gray-400 max-w-lg mx-auto leading-relaxed">
+          Celebrate an anniversary, surprise a friend, or customize your own bedroom. Let's make something beautiful today.
+        </p>
+        <div class="flex justify-center gap-4 pt-2">
+          <a href="customize.html" class="bg-gradient-to-r from-[#D4AF37] to-[#F3CD46] text-[#0B1F3A] font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-yellow-500/20 transform hover:-translate-y-0.5 transition-all text-xs uppercase tracking-wider">
+            Start Designing
+          </a>
+          <a href="services.html" class="border border-slate-700 hover:border-white text-white font-semibold py-3.5 px-8 rounded-full transition-all text-xs">
+            Browse Frame Catalog
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer (Injected dynamically) -->
+  <footer id="global-footer"></footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top" class="fixed bottom-6 left-6 z-[90] w-12 h-12 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F3CD46] text-[#0B1F3A] shadow-lg flex items-center justify-center opacity-0 pointer-events-none translate-y-4 transition-all duration-300 focus:outline-none hover:scale-105">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Floating WhatsApp button -->
+  <button id="whatsapp-floating-btn" class="fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none group">
+    <i class="fab fa-whatsapp text-3xl"></i>
+    <span class="absolute right-16 bg-navy-950 border border-slate-700 text-white font-bold text-[10px] tracking-wider py-1.5 px-3.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl whitespace-nowrap">Need Help? Chat with us</span>
+  </button>
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+
+  <!-- Global App JS -->
+  <script src="js/app.js"></script>
+</body>
+</html>

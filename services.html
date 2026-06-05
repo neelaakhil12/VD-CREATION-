@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse all customizable photo frames and personalized photo gifts by VD CREATION. Design your own acrylic, matte, or LED glowing frames.">
+  <title>Our Services & Products | VD CREATION - Customize Your Frames</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050e1a',
+              900: '#0B1F3A',
+              800: '#13294B',
+              700: '#1E3A5F',
+              600: '#2A4D7C',
+            },
+            gold: {
+              DEFAULT: '#D4AF37',
+              hover: '#F3CD46'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-navy-950 text-white min-h-screen flex flex-col">
+
+  <!-- Sticky Navbar (Injected dynamically) -->
+  <header id="global-header"></header>
+
+  <!-- Main Content -->
+  <main class="flex-grow py-12 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto space-y-10">
+      
+      <!-- Page Header Title -->
+      <div class="text-center max-w-xl mx-auto space-y-3" data-aos="fade-up">
+        <span class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Aesthetic Galleries</span>
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Our Services & Products</h1>
+        <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+          Select a frame structure, upload your favorite picture, scale it to your requirements, and let us build your custom gift.
+        </p>
+      </div>
+
+      <!-- Filter Controls Grid -->
+      <div class="bg-navy-900/60 border border-slate-800 p-6 rounded-3xl space-y-6 backdrop-blur-md" data-aos="fade-up">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <!-- Text Search input -->
+          <div class="relative flex-grow max-w-md">
+            <input type="text" id="catalog-search-bar" placeholder="Search by frame type, material or description..." class="w-full bg-slate-950/70 border border-slate-800 text-white rounded-full py-2.5 px-5 pr-10 text-xs focus:outline-none focus:border-[#D4AF37] transition-all">
+            <button class="absolute right-4 top-3 text-gray-500 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Sorting Select -->
+          <div class="flex items-center space-x-3 justify-end">
+            <span class="text-xs text-gray-400 font-medium">Sort by:</span>
+            <select id="sort-select" class="bg-slate-950/70 border border-slate-800 text-white text-xs rounded-lg py-2.5 px-4 focus:outline-none focus:border-[#D4AF37] cursor-pointer">
+              <option value="default">Popularity</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Rating: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Category Horizontal Tabs -->
+        <div class="border-t border-slate-800/80 pt-4">
+          <div id="category-tabs-container" class="flex items-center space-x-3 overflow-x-auto pb-2 scrollbar-none">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Counts feedback label -->
+      <div class="flex items-center justify-between text-xs text-gray-400 px-2" data-aos="fade-up">
+        <span id="catalog-results-count" class="font-medium">0 products found</span>
+        <button onclick="resetCatalogFilters()" class="text-gray-400 hover:text-[#D4AF37] transition-colors"><i class="fas fa-redo mr-1.5 text-[10px]"></i>Reset Filters</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="catalog-products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- Rendered dynamically via catalog.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer (Injected dynamically) -->
+  <footer id="global-footer"></footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top" class="fixed bottom-6 left-6 z-[90] w-12 h-12 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F3CD46] text-[#0B1F3A] shadow-lg flex items-center justify-center opacity-0 pointer-events-none translate-y-4 transition-all duration-300 focus:outline-none hover:scale-105">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Floating WhatsApp button -->
+  <button id="whatsapp-floating-btn" class="fixed bottom-6 right-6 z-[90] w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none group">
+    <i class="fab fa-whatsapp text-3xl"></i>
+    <span class="absolute right-16 bg-navy-950 border border-slate-700 text-white font-bold text-[10px] tracking-wider py-1.5 px-3.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl whitespace-nowrap">Need Help? Chat with us</span>
+  </button>
+
+  <!-- AOS Animation Script -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+
+  <!-- Global App JS -->
+  <script src="js/app.js"></script>
+
+  <!-- Catalog Render JS -->
+  <script src="js/catalog.js"></script>
+</body>
+</html>

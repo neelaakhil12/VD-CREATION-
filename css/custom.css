@@ -1,0 +1,212 @@
+/* custom.css - VD CREATION Styling Extensions */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-dark: #0B1F3A;
+  --navy-deep: #13294B;
+  --navy-blue: #1E3A5F;
+  --navy-light: #2A4D7C;
+  --gold-accent: #D4AF37;
+  --gold-hover: #F3CD46;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-accent);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography Overrides */
+body {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background-color: #050e1a;
+  color: #f3f4f6;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Styles */
+.glass-card {
+  background: rgba(19, 41, 75, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(11, 31, 58, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-panel {
+  background: rgba(11, 31, 58, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ---------------------------------------------------- */
+/* Frame Styles for Live Customizer & Previews          */
+/* ---------------------------------------------------- */
+
+/* 1. Acrylic Frame Style */
+.frame-acrylic {
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4), 
+    0 5px 15px rgba(0, 0, 0, 0.2), 
+    inset 0 0 12px rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+/* Glossy highlight line overlaying acrylic */
+.frame-acrylic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 60%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Acrylic mounting studs */
+.acrylic-stud {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #b8b8b8 40%, #71717a 85%, #3f3f46 100%);
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.8);
+  z-index: 10;
+}
+.stud-tl { top: 12px; left: 12px; }
+.stud-tr { top: 12px; right: 12px; }
+.stud-bl { bottom: 12px; left: 12px; }
+.stud-br { bottom: 12px; right: 12px; }
+
+/* 2. Zink Mate Frame Style (Modern Premium Matte border) */
+.frame-matte {
+  border: 18px solid #141416;
+  border-image: linear-gradient(to bottom, #232326, #141416) 1;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.5), 
+    inset 0 0 8px rgba(0, 0, 0, 0.8),
+    0 0 1px 1px rgba(255, 255, 255, 0.1);
+  background-color: #0d0d0f;
+  transition: all 0.3s ease;
+}
+
+/* 3. Classic / Normal Frame Style (Rustic wood styling) */
+.frame-classic {
+  border: 24px solid #3d2410;
+  border-image: linear-gradient(135deg, #4d2f16, #2d180a 50%, #1a0e05 100%) 24;
+  box-shadow: 
+    0 25px 45px rgba(0, 0, 0, 0.6), 
+    inset 0 0 12px rgba(0, 0, 0, 0.7),
+    0 4px 10px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+/* 4. Glowing LED Frame Style */
+.frame-led {
+  border: 16px solid #27272a;
+  background-color: #09090b;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.frame-led::before {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  pointer-events: none;
+}
+
+/* LED Glow Backlights */
+.led-glow-warm {
+  box-shadow: 
+    0 0 25px 8px rgba(251, 191, 36, 0.35), 
+    0 0 50px 18px rgba(251, 191, 36, 0.15),
+    inset 0 0 15px rgba(251, 191, 36, 0.4);
+}
+.led-glow-white {
+  box-shadow: 
+    0 0 25px 8px rgba(255, 255, 255, 0.45), 
+    0 0 50px 18px rgba(255, 255, 255, 0.18),
+    inset 0 0 15px rgba(255, 255, 255, 0.4);
+}
+.led-glow-cool {
+  box-shadow: 
+    0 0 25px 8px rgba(96, 165, 250, 0.4), 
+    0 0 50px 18px rgba(96, 165, 250, 0.15),
+    inset 0 0 15px rgba(96, 165, 250, 0.45);
+}
+.led-glow-off {
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 8px rgba(0,0,0,0.6);
+}
+
+/* Canvas/Image container wrapper for preview */
+.preview-image-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #171d26;
+  cursor: grab;
+}
+.preview-image-container:active {
+  cursor: grabbing;
+}
+
+/* Shimmer animation for loading states */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #13294b 25%, #1e3a5f 50%, #13294b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Soft gold glow button hover */
+.btn-gold-glow {
+  transition: all 0.3s ease;
+}
+.btn-gold-glow:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Interactive custom check animation for add to cart success */
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
