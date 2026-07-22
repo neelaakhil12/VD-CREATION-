@@ -1,183 +1,366 @@
 // catalog.js - Products listing, filter, search and catalog renderer for VD CREATION services page
 
-const PRODUCTS_DATABASE = [
+let PRODUCTS_DATABASE = [
   // Acrylic Frames
   {
-    productId: "acrylic-wall-photo",
-    productName: "Acrylic Wall Photo Frame",
+    productId: "acrylic-couple-frame",
+    productName: "Premium Couple Acrylic Photo Frame",
     category: "acrylic",
     categoryLabel: "Acrylic Frames",
     basePrice: 399,
-    rating: 4.9,
-    reviews: 142,
-    productImage: "assets/acrylic_frame.png",
-    description: "Frameless, premium high-gloss printing on diamond-polished acrylic sheets. Floating wall mount system.",
-    sizes: ["6x9", "8x12", "10x15", "12x18"],
-    features: ["Diamond Polished Edges", "Moisture Resistant", "Floating Wall Mount", "UV Resistant Printing"]
-  },
-  {
-    productId: "acrylic-fridge-magnets",
-    productName: "Acrylic Photo Fridge Magnets (Set of 3)",
-    category: "acrylic",
-    categoryLabel: "Acrylic Frames",
-    basePrice: 199,
     rating: 4.8,
-    reviews: 84,
-    productImage: "assets/gift_items.png",
-    description: "Cute and glossy customized mini acrylic magnets to decorate your refrigerator with memories.",
-    sizes: ["3x3", "4x4"],
-    features: ["Strong Rubber Magnet", "Crystal Clear Acrylic", "Pack of 3"]
-  },
-  {
-    productId: "aluminum-framed-acrylic",
-    productName: "Aluminum Framed Acrylic Photo Frame",
-    category: "acrylic",
-    categoryLabel: "Acrylic Frames",
-    basePrice: 799,
-    rating: 4.9,
-    reviews: 58,
-    productImage: "assets/acrylic_frame.png",
-    description: "Glossy acrylic photo mounted inside a premium brushed aluminum border frame. Modern and sleek style.",
-    sizes: ["8x12", "10x15", "12x18", "16x20"],
-    features: ["Anodized Aluminum Frame", "Acrylic Print Protection", "Heavy-duty hangers"]
-  },
-  {
-    productId: "acrylic-mini-gallery",
-    productName: "Acrylic Photo Mini Wall Gallery",
-    category: "acrylic",
-    categoryLabel: "Acrylic Frames",
-    basePrice: 999,
-    rating: 5.0,
-    reviews: 31,
-    productImage: "assets/hero_banner.png",
-    description: "Set of 5 mini acrylic frames to design an aesthetic gallery collage wall in your hallway.",
-    sizes: ["4x6 (x5)", "6x6 (x5)"],
-    features: ["Includes 5 Frame panels", "Aesthetic Collage Layout", "Self-adhesive installation tape"]
-  },
-  {
-    productId: "acrylic-photo-stand",
-    productName: "Acrylic Photo Desktop Stand",
-    category: "acrylic",
-    categoryLabel: "Acrylic Frames",
-    basePrice: 299,
-    rating: 4.7,
-    reviews: 79,
-    productImage: "assets/gift_items.png",
-    description: "Beautiful vertical acrylic display block with a polished heavy wooden base for office desks and nightstands.",
-    sizes: ["6x9", "8x12"],
-    features: ["Thick Acrylic Block", "Solid Pine Wood Base", "Perfect Desktop Display"]
+    reviews: 120,
+    productImage: "assets/acrylic_couple.png",
+    emptyImage: "assets/acrylic_couple_empty.png",
+    cropLeft: 9.21,
+    cropTop: 5.59,
+    cropWidth: 80.11,
+    cropHeight: 87.71,
+    description: "Elegant couples customized photo frame mounted on high-gloss diamond-polished acrylic sheets. Modern and clean style.",
+    sizes: ["6x9", "8x12", "10x15", "12x18"],
+    features: ["Diamond Polished Edges", "High-Gloss Crystal Printing", "Couples Floating Mount System"]
   },
 
-  // Zink Mate Frames
+
+
+  // Normal Photo Frames
   {
-    productId: "zink-mate-classic",
-    productName: "Zink Mate Classic Photo Frame",
+    productId: "black-wood-normal",
+    productName: "Premium Black Wood Normal Photo Frame",
+    category: "classic",
+    categoryLabel: "Normal Frames",
+    basePrice: 299,
+    rating: 4.8,
+    reviews: 95,
+    productImage: "assets/normal_black_wood.png",
+    emptyImage: "assets/normal_black_wood_empty.png",
+    cropLeft: 21.12,
+    cropTop: 24.82,
+    cropWidth: 57.66,
+    cropHeight: 57.35,
+    description: "Elegant bordered photo frame with synthetic black wood grains and glass protection. Premium and modern style.",
+    sizes: ["6x9", "8x12", "10x15", "12x18", "16x20", "16x24", "18x24", "20x30", "24x36", "24x48"],
+    features: ["Premium Synthetic Black Wood", "Clear Glass Protection", "Pre-installed Wall Hanging Hooks"]
+  },
+  {
+    productId: "light-wood-normal",
+    productName: "Premium Light Wood Normal Photo Frame",
+    category: "classic",
+    categoryLabel: "Normal Frames",
+    basePrice: 299,
+    rating: 4.7,
+    reviews: 110,
+    productImage: "assets/normal_wood_light.png",
+    emptyImage: "assets/normal_wood_light_empty.png",
+    cropLeft: 21.05,
+    cropTop: 11.88,
+    cropWidth: 50.00,
+    cropHeight: 71.85,
+    description: "Elegant bordered photo frame with synthetic light wood grains and glass protection. Premium and warm modern style.",
+    sizes: ["6x9", "8x12", "10x15", "12x18", "16x20", "16x24", "18x24", "20x30", "24x36", "24x48"],
+    features: ["Premium Synthetic Light Wood", "Clear Glass Protection", "Pre-installed Wall Hanging Hooks"]
+  },
+
+
+
+
+
+  // ── Normal Frames: Black Wood Collage Designs ─────────────────────────────────
+  {
+    productId: "couple-bw-collage-frame",
+    productName: "Couple B&W Story Collage Frame",
+    category: "classic",
+    categoryLabel: "Normal Frames",
+    basePrice: 499,
+    rating: 4.9,
+    reviews: 86,
+    slots: 4,
+    productImage: "image copy 7.png",
+    description: "A stunning black & white story collage frame featuring multiple couple photos fading into a central portrait cutout — perfect for anniversaries and love gifts.",
+    sizes: ["6x9", "8x12", "10x15", "12x18"],
+    features: ["B&W + Color Mixed Collage", "Custom Name & Date Text", "White Wood Frame Finish"]
+  },
+  {
+    productId: "bride-solo-collage-frame",
+    productName: "Bride Solo Strip Collage Frame",
+    category: "classic",
+    categoryLabel: "Normal Frames",
+    basePrice: 549,
+    rating: 4.9,
+    reviews: 67,
+    slots: 4,
+    productImage: "image copy 6.png",
+    description: "A glamorous bridal frame with four vertical strip photos fading into a full-color portrait below — perfect for bride gifting or bridal shower memento.",
+    sizes: ["6x9", "8x12", "10x15", "12x18"],
+    features: ["4-Strip to Portrait Design", "Fade-in Effect", "Custom Name Text", "Black Wood Frame"]
+  },
+  {
+    productId: "baby-minimalist-stats-frame",
+    productName: "Minimalist Baby Birth Stats Frame",
+    category: "classic",
+    categoryLabel: "Normal Frames",
+    basePrice: 549,
+    rating: 4.9,
+    reviews: 108,
+    slots: 3,
+    productImage: "image copy 13.png",
+    description: "A clean, minimal, and elegant baby birth announcement frame with icons for city, date, time, weight and height — paired with three beautiful newborn photos. White wood frame.",
+    sizes: ["6x9", "8x12", "10x15", "12x18"],
+    features: ["Minimalist Icon Stats Layout", "3-Photo Strip Column", "Custom Baby Name & Details", "White Wood Frame"]
+  },
+  {
+    productId: "baby-botanical-single-frame",
+    productName: "Botanical Baby Announcement Frame",
+    category: "classic",
+    categoryLabel: "Normal Frames",
+    basePrice: 499,
+    rating: 4.8,
+    reviews: 93,
+    slots: 3,
+    productImage: "image copy 16.png",
+    description: "A soft botanical-styled newborn frame with baby name, birth date, time, weight, height and hospital details. Elegant and timeless for nursery walls. Natural wood frame.",
+    sizes: ["6x9", "8x12", "10x15", "12x18"],
+    features: ["Botanical Leaf Accents", "Birth Stats & Hospital Name", "3-Photo Column", "Natural Wood Frame Finish"]
+  },
+  {
+    productId: "baby-polaroid-announcement-frame",
+    productName: "Baby Polaroid Announcement Frame",
+    category: "classic",
+    categoryLabel: "Normal Frames",
+    basePrice: 449,
+    rating: 4.8,
+    reviews: 74,
+    slots: 3,
+    productImage: "image copy 23.png",
+    description: "A fresh and modern baby announcement frame styled like a polaroid with watercolour botanical accents, baby name, date, time, weight and height details. Natural wood frame.",
+    sizes: ["6x9", "8x12", "10x15"],
+    features: ["Polaroid-Style Photo Layout", "Watercolour Botanical Design", "Custom Baby Name & Stats", "Natural Wood Frame"]
+  },
+
+  // ── Zink Mate Frames: Dark Matte Collage Designs ──────────────────────────────
+  {
+    productId: "couple-days-of-love-frame",
+    productName: "Days of Love Cinematic Couple Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 549,
+    rating: 4.8,
+    reviews: 73,
+    slots: 2,
+    productImage: "image copy 9.png",
+    description: "Cinematic dual-exposure design merging couple portraits into a breathtaking landscape backdrop. A truly movie-poster style love frame. Premium black matte finish.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Dual Exposure Cinematic Effect", "Custom Text Overlay", "Premium Black Matte Frame"]
+  },
+  {
+    productId: "couple-together-forever-collage",
+    productName: "Together Forever Couple Collage Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 599,
+    rating: 4.9,
+    reviews: 112,
+    slots: 4,
+    productImage: "image copy 10.png",
+    description: "A bold multi-photo collage with a vibrant central cutout couple — capturing every beautiful moment together in one dark matte frame. Black textured finish.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Multi-Photo Grid Collage", "Full Color Cutout Portrait", "Custom Quote & Name", "Black Textured Matte Frame"]
+  },
+  {
+    productId: "couple-heart-collage-frame",
+    productName: "Heart-Shape Couple Collage Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 549,
+    rating: 4.8,
+    reviews: 95,
+    slots: 4,
+    productImage: "image copy 11.png",
+    description: "A romantic heart-shaped photo collage arrangement with custom names, date and a love quote on a dark background — ideal for anniversaries and Valentine's Day.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Heart-shape Photo Arrangement", "Custom Names & Date", "Dark Romantic Background", "Black Matte Frame"]
+  },
+  {
+    productId: "wedding-bw-grid-frame",
+    productName: "Wedding B&W Grid Collage Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 649,
+    rating: 4.9,
+    reviews: 78,
+    slots: 5,
+    productImage: "image copy 17.png",
+    description: "A beautiful black-and-white grid collage frame with a central color-pop couple portrait for wedding day memories. Includes couple name and wedding date. Dark matte frame.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["B&W Grid + Color Center Portrait", "Custom Name & Wedding Date", "Black Matte Frame", "Premium Zink Print Quality"]
+  },
+  {
+    productId: "wedding-story-collage-frame",
+    productName: "Wedding Story Collage Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 699,
+    rating: 4.9,
+    reviews: 54,
+    slots: 4,
+    productImage: "image copy 18.png",
+    description: "A warm-toned wedding story frame with multiple couple portraits in a stacked grid layout — capturing the romance and elegance of your big day. Black matte frame.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Multi-Photo Story Grid", "Custom Name & Wedding Date", "Wave-style Photo Cutout", "Black Matte Frame"]
+  },
+  {
+    productId: "wedding-honeycomb-calendar-frame",
+    productName: "Wedding Style Honeycomb Calendar Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 799,
+    rating: 4.8,
+    reviews: 42,
+    slots: 6,
+    productImage: "image copy 15.png",
+    description: "A luxurious dark-background wedding frame with honeycomb hexagonal photo layout, embossed calendar, and custom couple names — the perfect wedding gift. Black matte frame.",
+    sizes: ["10x15", "12x18", "16x20", "18x24"],
+    features: ["Hexagonal Honeycomb Layout", "Calendar with Wedding Date", "Custom Names & Quote", "Gold Accent Typography"]
+  },
+  {
+    productId: "birthday-calendar-collage-frame",
+    productName: "Happy Birthday Calendar Collage Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 499,
+    rating: 4.9,
+    reviews: 138,
+    slots: 3,
+    productImage: "image copy 19.png",
+    description: "A vibrant birthday frame combining a large portrait photo with a birthday-month calendar and smaller photo strips. A memorable personalized birthday gift. Black matte frame.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Birthday Month Calendar", "Photo Strips Sidebar", "Custom Name & Message", "Dark Matte Background Frame"]
+  },
+  {
+    productId: "birthday-strip-calendar-frame",
+    productName: "Birthday Photo Strip Calendar Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 499,
+    rating: 4.8,
+    reviews: 96,
+    slots: 3,
+    productImage: "image copy 21.png",
+    description: "An elegant birthday frame with vertical photo strips and a birthday-month calendar with a highlighted birthday date. Black matte frame with botanical style.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Vertical Photo Strips Layout", "Month Calendar with Highlight", "Custom Name Lettering", "Black Matte Frame"]
+  },
+  {
+    productId: "birthday-bw-collage-frame",
+    productName: "Happy Birthday B&W Collage Frame",
     category: "matte",
     categoryLabel: "Zink Mate Frames",
     basePrice: 449,
     rating: 4.8,
-    reviews: 110,
-    productImage: "assets/matte_frame.png",
-    description: "Luxury matte finish border frame protecting your photo with anti-reflective plexiglass. Clean modern look.",
-    sizes: ["6x9", "8x12", "10x15", "12x18", "16x20", "16x24", "18x24", "20x30", "24x36", "24x48"],
-    features: ["Fingerprint-resistant Matte", "Deep Dark Border Style", "Includes Mount Border card"]
+    reviews: 72,
+    slots: 4,
+    productImage: "image copy 24.png",
+    description: "A clean and elegant birthday frame with three top black-and-white portraits fading into a central vibrant color photo — with custom birthday text. Black matte frame.",
+    sizes: ["8x12", "10x15", "12x18"],
+    features: ["B&W to Color Fade Effect", "Triple Photo Panel Top", "Custom Birthday Name", "Black Matte Frame"]
   },
   {
-    productId: "zink-mate-collage",
-    productName: "Zink Mate Multi-Photo Collage Frame",
+    productId: "birthday-floral-triple-frame",
+    productName: "Birthday Floral Triple Photo Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 549,
+    rating: 4.9,
+    reviews: 61,
+    slots: 3,
+    productImage: "image copy 27.png",
+    description: "A stunning birthday frame with triple photo view set against a floral purple backdrop — radiating elegance with custom name and date text. Dark matte frame.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Triple Photo Composition", "Floral Bloom Background", "Custom Name & Date", "Premium Black Matte Frame"]
+  },
+  {
+    productId: "baby-stats-infographic-frame",
+    productName: "Baby Birth Stats Infographic Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 599,
+    rating: 5.0,
+    reviews: 164,
+    slots: 3,
+    productImage: "image copy 12.png",
+    description: "A colorful and fun baby birth announcement frame showcasing birth date, time, weight, blood group, hospital, and parent photos — a cherished keepsake. Black matte frame.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Birth Stats Icons Layout", "Baby & Parents Photos", "Custom Name & Details", "Black Matte Frame"]
+  },
+  {
+    productId: "baby-calendar-collage-frame",
+    productName: "Baby Photo Calendar Collage Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 649,
+    rating: 4.9,
+    reviews: 87,
+    slots: 6,
+    productImage: "image copy 14.png",
+    description: "A heartwarming frame featuring six adorable baby photos in a grid with an arched center display, birth-month calendar, and custom name. Black matte frame.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["6-Photo Baby Grid Collage", "Birth Month Calendar", "Arched Center Photo", "Custom Name & Parent Message"]
+  },
+  {
+    productId: "solo-cutout-collage-frame",
+    productName: "Solo Cutout Multi-Photo Collage Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 499,
+    rating: 4.8,
+    reviews: 58,
+    slots: 4,
+    productImage: "image copy 20.png",
+    description: "A striking black-and-white photo collage with a central cutout portrait — great for tributes, farewell gifts, and personal milestone celebrations. Dark matte frame.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["B&W Multi-Grid Collage", "Central Cutout Portrait", "Custom Name & Quote", "Black Matte Frame"]
+  },
+  {
+    productId: "solo-rounded-strip-frame",
+    productName: "Solo Rounded Strip Photo Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 499,
+    rating: 4.8,
+    reviews: 49,
+    slots: 4,
+    productImage: "image copy 22.png",
+    description: "An elegant solo portrait frame with four rounded-edge photo strips alongside a large cutout portrait — with floral botanical accents and custom name. Dark matte frame.",
+    sizes: ["8x12", "10x15", "12x18"],
+    features: ["Rounded Photo Strips", "Botanical Leaf Accents", "Large Portrait Cutout", "Black Matte Frame"]
+  },
+  {
+    productId: "anniversary-number-collage-frame",
+    productName: "Anniversary Number Collage Frame",
     category: "matte",
     categoryLabel: "Zink Mate Frames",
     basePrice: 699,
-    rating: 4.9,
-    reviews: 46,
-    productImage: "assets/matte_frame.png",
-    description: "Custom layout matte frame supporting 3 to 9 photos inside a premium dark grid structure.",
-    sizes: ["12x18", "16x20", "18x24", "20x30", "24x36"],
-    features: ["Flexible Grid Layouts", "Solid Backboard Panel", "Pre-installed Hanging Hardware"]
-  },
-
-  // Normal Photo Frames
-  {
-    productId: "classic-wood-normal",
-    productName: "Classic Normal Photo Frame (Wood Finish)",
-    category: "classic",
-    categoryLabel: "Normal Frames",
-    basePrice: 299,
-    rating: 4.6,
-    reviews: 135,
-    productImage: "assets/hero_banner.png",
-    description: "Traditional bordered photo frame with synthetic wood grains and glass protection. Elegant and warm.",
-    sizes: ["6x9", "8x12", "10x15", "12x18", "16x20", "16x24", "18x24", "20x30", "24x36", "24x48"],
-    features: ["Textured Synthetic Wood", "Double Beveled Borders", "Sturdy Backstand and Hang brackets"]
-  },
-
-  // LED Frames
-  {
-    productId: "led-table-frame",
-    productName: "Glowing LED Table Photo Frame",
-    category: "led",
-    categoryLabel: "LED Frames",
-    basePrice: 699,
-    rating: 4.9,
-    reviews: 210,
-    productImage: "assets/led_frame.png",
-    description: "Warm glowing LED backlit table stand frame. Renders an emotional warmth to your family portraits.",
-    sizes: ["6x9", "8x12", "10x15", "12x18"],
-    features: ["Warm Yellow Micro LEDs", "Handcrafted Pinewood Casing", "1.5m USB Cable with toggle switch"]
+    rating: 5.0,
+    reviews: 82,
+    slots: 4,
+    productImage: "image copy 26.png",
+    description: "A unique anniversary frame where your milestone number is filled with couple photos — set against a B&W portrait backdrop. Customize any anniversary year. Dark matte frame.",
+    sizes: ["8x12", "10x15", "12x18", "16x20"],
+    features: ["Number-Shaped Photo Collage", "B&W Background Portrait", "Custom Year & Anniversary Text", "Black Matte Frame"]
   },
   {
-    productId: "led-heart-wall-frame",
-    productName: "LED Glowing Heart-shape Wall Frame",
-    category: "led",
-    categoryLabel: "LED Frames",
-    basePrice: 1299,
-    rating: 4.8,
-    reviews: 64,
-    productImage: "assets/led_frame.png",
-    description: "Beautiful heart shaped glowing border frame. The ultimate romantic anniversary or birthday surprise gift.",
-    sizes: ["12x12", "16x16"],
-    features: ["Romantic Heart Silhouette", "Warm & Cool Dual Light Mode", "Easy Wall-hook setup"]
-  },
-
-  // Personalized Products
-  {
-    productId: "personalized-keychain",
-    productName: "Personalized Acrylic Photo Keychain",
-    category: "gifts",
-    categoryLabel: "Personalized Gifts",
-    basePrice: 99,
-    rating: 4.7,
-    reviews: 280,
-    productImage: "assets/gift_items.png",
-    description: "Keep your favorite person close. High density scratch-free double-sided customized acrylic keychain.",
-    sizes: ["2x2", "2.5x2.5"],
-    features: ["Double sided printing", "Sturdy steel ring loop", "Scratch-resistant clear coat"]
-  },
-  {
-    productId: "luggage-tags",
-    productName: "Customized Photo Luggage Tags",
-    category: "gifts",
-    categoryLabel: "Personalized Gifts",
-    basePrice: 149,
-    rating: 4.5,
-    reviews: 51,
-    productImage: "assets/gift_items.png",
-    description: "Spot your bags instantly. Waterproof polymer tags printed with your photo and emergency contact details.",
-    sizes: ["3.5x2"],
-    features: ["Flexy loop strap included", "Writable backing details", "Durable water-resistant coating"]
-  },
-  {
-    productId: "mini-wall-galleries",
-    productName: "Desktop Mini Frame Stands (Set of 3)",
-    category: "gifts",
-    categoryLabel: "Personalized Gifts",
-    basePrice: 199,
-    rating: 4.8,
-    reviews: 90,
-    productImage: "assets/gift_items.png",
-    description: "Three cute individual mini frames standing together. Ideal to showcase a baby growth tracker or trips.",
-    sizes: ["3x4 (Set of 3)"],
-    features: ["Sturdy tabletop kickstand", "Compact memory blocks", "Set of 3"]
+    productId: "family-watercolor-merge-frame",
+    productName: "Family Watercolour Merge Art Frame",
+    category: "matte",
+    categoryLabel: "Zink Mate Frames",
+    basePrice: 799,
+    rating: 5.0,
+    reviews: 47,
+    slots: 3,
+    productImage: "image copy 25.png",
+    description: "A stunning watercolour art-style frame that merges multiple family photos into a single painterly portrait — a museum-worthy keepsake for your home. Black matte frame.",
+    sizes: ["10x15", "12x18", "16x20", "18x24", "20x30"],
+    features: ["Watercolour Art Effect", "Multi-Photo Merge", "Custom Quote Text", "Premium Black Matte Frame"]
   }
 ];
 
@@ -195,6 +378,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Render initial catalog products
   renderCatalog();
+
+  // Render homepage dynamic collections grid if present
+  renderHomepageCollections();
   
   // Bind select list sort events
   const sortSelect = document.getElementById('sort-select');
@@ -231,17 +417,20 @@ function parseURLParams() {
   }
 }
 
+let DYNAMIC_CATEGORIES = [
+  { id: 'acrylic', label: 'Acrylic Frames' },
+  { id: 'matte', label: 'Zink Mate Frames' },
+  { id: 'classic', label: 'Normal Frames' },
+  { id: 'led', label: 'LED Frames' }
+];
+
 function setupFilters() {
   const tabsContainer = document.getElementById('category-tabs-container');
   if (!tabsContainer) return;
 
   const categories = [
     { id: 'all', label: 'All Products' },
-    { id: 'acrylic', label: 'Acrylic Frames' },
-    { id: 'matte', label: 'Zink Mate' },
-    { id: 'classic', label: 'Normal Frames' },
-    { id: 'led', label: 'LED Frames' },
-    { id: 'gifts', label: 'Personalized Gifts' }
+    ...(window.DYNAMIC_CATEGORIES && window.DYNAMIC_CATEGORIES.length > 0 ? window.DYNAMIC_CATEGORIES : DYNAMIC_CATEGORIES)
   ];
 
   tabsContainer.innerHTML = categories.map(cat => {
@@ -361,16 +550,26 @@ function renderCatalog() {
               <span class="text-[9px] text-gray-500 uppercase block">Starting Price</span>
               <span class="text-base font-bold text-[#D4AF37]">₹${item.basePrice}</span>
             </div>
-            <a href="customize.html?product=${item.productId}" class="bg-[#D4AF37] hover:bg-[#F3CD46] text-[#0B1F3A] font-bold text-xs py-2.5 px-4 rounded-lg shadow transition-colors flex items-center space-x-1.5">
+            <button onclick="openCustomizerForProduct('${item.productId}')" class="bg-[#D4AF37] hover:bg-[#F3CD46] text-[#0B1F3A] font-bold text-xs py-2.5 px-4 rounded-lg shadow transition-colors flex items-center space-x-1.5 cursor-pointer">
               <span>Customize</span>
               <i class="fas fa-magic text-[10px]"></i>
-            </a>
+            </button>
           </div>
         </div>
       </div>
     `;
   }).join('');
 }
+
+window.openCustomizerForProduct = function(productId) {
+  const prod = typeof PRODUCTS_DATABASE !== 'undefined' ? PRODUCTS_DATABASE.find(item => item.productId === productId) : null;
+  if (prod) {
+    try {
+      sessionStorage.setItem('vd_selected_product', JSON.stringify(prod));
+    } catch (e) {}
+  }
+  window.location.href = `customize.html?product=${productId}`;
+};
 
 window.toggleWishlistFromCatalog = function(prodId) {
   const prod = PRODUCTS_DATABASE.find(item => item.productId === prodId);
@@ -394,3 +593,191 @@ window.resetCatalogFilters = function() {
   setupFilters();
   renderCatalog();
 };
+
+// ====================================================================
+// VD Database: Dynamic Supabase Catalog Sync Logic
+// ====================================================================
+async function loadSupabaseProducts() {
+  if (typeof window.supabase === 'undefined') {
+    return;
+  }
+
+  const SUPABASE_URL = 'https://wctyhhhvksfjqsudqwrm.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjdHloaGh2a3NmanFzdWRxd3JtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQyNjc0NDUsImV4cCI6MjA5OTg0MzQ0NX0.hsOQs0V7dSG6SoSEWrH0Gv3bcMx7Voc0SzzwVmwUMJ8';
+  
+  try {
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+    // Fetch dynamic categories list
+    const { data: dbCategories } = await supabaseClient
+      .from('categories')
+      .select('*')
+      .order('created_at', { ascending: true });
+
+    let syncedCategories = [];
+    if (dbCategories && dbCategories.length > 0) {
+      syncedCategories = dbCategories.map(c => ({
+        id: c.id,
+        label: c.name || c.id
+      }));
+    }
+
+    // Fetch products
+    const { data: dbProducts, error } = await supabaseClient
+      .from('products')
+      .select('*')
+      .order('created_at', { ascending: true });
+
+    if (error) throw error;
+
+    if (dbProducts && dbProducts.length > 0) {
+      const mapped = dbProducts.map(p => ({
+        productId: p.id,
+        productName: p.name,
+        category: p.category,
+        categoryLabel: p.category_label || p.category,
+        basePrice: parseFloat(p.base_price) || 299,
+        rating: parseFloat(p.rating) || 5.0,
+        reviews: parseInt(p.reviews) || 0,
+        productImage: p.product_image,
+        emptyImage: p.empty_image || null,
+        cropLeft: parseFloat(p.crop_left) || 0,
+        cropTop: parseFloat(p.crop_top) || 0,
+        cropWidth: parseFloat(p.crop_width) || 100,
+        cropHeight: parseFloat(p.crop_height) || 100,
+        description: p.description || '',
+        sizes: (() => {
+          let raw = p.sizes;
+          if (typeof raw === 'string') {
+            try { raw = JSON.parse(raw); } catch (e) { raw = []; }
+          }
+          if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+            return Object.keys(raw);
+          }
+          return Array.isArray(raw) ? raw : [];
+        })(),
+        sizePrices: (() => {
+          let raw = p.sizes;
+          if (typeof raw === 'string') {
+            try { raw = JSON.parse(raw); } catch (e) { raw = null; }
+          }
+          if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+            return raw;
+          }
+          return null;
+        })(),
+        slots: p.slots ? (typeof p.slots === 'number' ? p.slots : (parseInt(p.slots) || 1)) : 1,
+        features: Array.isArray(p.features) ? p.features : JSON.parse(p.features || '[]')
+      }));
+
+      // Override fallback catalog
+      PRODUCTS_DATABASE = mapped;
+      
+      // Also include any categories present on products that aren't in categories table
+      mapped.forEach(p => {
+        if (p.category && !syncedCategories.some(c => c.id === p.category)) {
+          syncedCategories.push({ id: p.category, label: p.categoryLabel || p.category });
+        }
+      });
+      
+      if (syncedCategories.length > 0) {
+        DYNAMIC_CATEGORIES = syncedCategories;
+        window.DYNAMIC_CATEGORIES = syncedCategories;
+      }
+
+      console.log(`[VD Database] Synced ${mapped.length} products and ${syncedCategories.length} categories from Supabase.`);
+      
+      // Trigger category tab & catalog renderers on active catalog view
+      if (typeof setupFilters === 'function') {
+        setupFilters();
+      }
+      if (typeof renderCatalog === 'function') {
+        renderCatalog();
+      }
+      if (typeof renderHomepageCollections === 'function') {
+        renderHomepageCollections();
+      }
+      
+      // Trigger customizer catalog load on customizer views
+      if (typeof window.syncCustomizerWithProduct === 'function') {
+        window.syncCustomizerWithProduct();
+      } else if (typeof initCustomizer === 'function') {
+        const params = new URLSearchParams(window.location.search);
+        const prodId = params.get('product') || 'acrylic-wall-photo';
+        currentProduct = PRODUCTS_DATABASE.find(item => item.productId === prodId) || PRODUCTS_DATABASE[0];
+        if (currentProduct) {
+          if (typeof populateSizesDropdown === 'function') populateSizesDropdown();
+          if (typeof updateUIOptions === 'function') updateUIOptions();
+          if (typeof calculatePrice === 'function') calculatePrice();
+          if (typeof loadFallbackProductImage === 'function') loadFallbackProductImage();
+        }
+      }
+    }
+  } catch (err) {
+    console.error("[VD Database] Sync failed. Falling back to local data.", err);
+  }
+}
+
+// Global function to render homepage frame collection cards
+window.renderHomepageCollections = function() {
+  const container = document.getElementById('homepage-collections-grid');
+  if (!container) return;
+
+  const categoriesMap = [
+    { id: 'acrylic', title: 'Acrylic Wall Photos', badge: 'Glossy Finish', link: 'customize.html?category=acrylic', defaultImg: 'image copy 9.png', desc: 'Frameless crystal-clear acrylic printing. Diamond-polished edges providing a floating premium glass finish.', price: 399, sizes: ["6x9", "8x12", "10x15", "12x18"] },
+    { id: 'matte', title: 'Zink Mate Frames', badge: 'Matte Finish', link: 'customize.html?category=matte', defaultImg: 'image copy 10.png', desc: 'Contemporary dark borders with smooth matte coating. Anti-glare and matches perfectly with modern home decors.', price: 449, sizes: ["8x12", "12x18", "18x24", "24x36"] },
+    { id: 'classic', title: 'Normal Wood Frames', badge: 'Classic Finish', link: 'customize.html?category=classic', defaultImg: 'assets/normal_black_wood.png', desc: 'Framed photo prints with synthetic black/light wood grains & clear glass protection. Timeless design.', price: 299, sizes: ["6x9", "8x12", "10x15", "12x18"] },
+    { id: 'led', title: 'Glowing LED Frames', badge: 'Glowing LED', link: 'customize.html?category=led', defaultImg: 'image copy 18.png', desc: 'Illuminated wooden frame designs. Soft, warm backlights casting a beautiful aura over family and couple portraits.', price: 699, sizes: ["6x9", "8x12", "10x15", "12x18"] }
+  ];
+
+  const html = categoriesMap.map((info, index) => {
+    const catProduct = PRODUCTS_DATABASE.find(p => p.category === info.id);
+    const img = (catProduct && catProduct.productImage) ? catProduct.productImage : info.defaultImg;
+    const price = (catProduct && catProduct.basePrice) ? catProduct.basePrice : info.price;
+    const sizes = (catProduct && catProduct.sizes && catProduct.sizes.length) ? catProduct.sizes.slice(0, 4) : info.sizes;
+
+    return `
+      <div class="bg-navy-950/60 border border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-yellow-500/5 group hover:border-[#D4AF37]/30 transition-all duration-300 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="${(index + 1) * 100}">
+        <div class="h-60 overflow-hidden relative bg-slate-950/40">
+          <img src="${img}" alt="${info.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-[#D4AF37] text-[#0B1F3A] text-[9px] font-bold py-1 px-3 rounded-full uppercase tracking-wider">${info.badge}</span>
+        </div>
+        <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+          <div class="space-y-3">
+            <h3 class="text-lg font-bold text-white">${info.title}</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">${info.desc}</p>
+            <div class="text-xs text-gray-400 flex flex-wrap gap-2">
+              ${sizes.map(s => `<span class="bg-slate-900 px-2.5 py-1 rounded">${s.includes('"') ? s : s + '"'}</span>`).join('')}
+            </div>
+          </div>
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+            <div>
+              <span class="text-[9px] text-gray-400 uppercase block">Starting at</span>
+              <span class="text-base font-bold text-[#D4AF37]">₹${price}</span>
+            </div>
+            <a href="${info.link}" class="bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-[#0B1F3A] font-bold text-xs py-2.5 px-4 rounded-lg transition-all duration-200">Customize</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = html;
+};
+
+// Load Supabase Client CDN dynamically if not present
+if (typeof window.supabase === 'undefined') {
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+  script.onload = () => {
+    loadSupabaseProducts();
+  };
+  document.head.appendChild(script);
+} else {
+  // If already loaded, run sync immediately
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadSupabaseProducts);
+  } else {
+    loadSupabaseProducts();
+  }
+}

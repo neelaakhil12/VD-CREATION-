@@ -76,6 +76,9 @@ function injectHeaderAndFooter() {
             <span id="wishlist-badge" class="absolute top-0 right-0 bg-[#D4AF37] text-[#0B1F3A] font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center transform translate-x-1.5 -translate-y-1.5 scale-0 transition-transform duration-300">0</span>
           </button>
 
+          <!-- Auth Slot -->
+          <div class="nav-auth-slot"></div>
+
           <!-- Cart -->
           <button id="cart-toggle-btn" class="relative p-2 text-gray-300 hover:text-[#D4AF37] transition-colors focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -109,6 +112,10 @@ function injectHeaderAndFooter() {
         </div>
       </div>
     `;
+
+    if (window.VDAuth) {
+      window.VDAuth.updateNavbarAuthUI();
+    }
   }
 
   if (footer) {
@@ -156,7 +163,6 @@ function injectHeaderAndFooter() {
             <li><a href="services.html?tab=matte" class="hover:text-[#D4AF37] hover:underline transition-colors">Zink Mate Frames</a></li>
             <li><a href="services.html?tab=classic" class="hover:text-[#D4AF37] hover:underline transition-colors">Normal/Wood Frames</a></li>
             <li><a href="services.html?tab=led" class="hover:text-[#D4AF37] hover:underline transition-colors">Glowing LED Frames</a></li>
-            <li><a href="services.html?tab=gifts" class="hover:text-[#D4AF37] hover:underline transition-colors">Personalized Gifts</a></li>
           </ul>
         </div>
 
@@ -268,6 +274,14 @@ function bindGlobalEvents() {
     });
   }
 
+  // Floating WhatsApp button action
+  const waFloatingBtn = document.getElementById('whatsapp-floating-btn');
+  if (waFloatingBtn) {
+    waFloatingBtn.addEventListener('click', () => {
+      window.open('https://api.whatsapp.com/send?phone=918249906764&text=Hello%20VD%20Creation!%20I%20have%20a%20query%20regarding%20custom%20photo%20frames.', '_blank');
+    });
+  }
+
   // Mobile menu toggle
   document.addEventListener('click', (e) => {
     const mobilePanel = document.getElementById('mobile-menu-panel');
@@ -375,9 +389,9 @@ function createCartDrawerHTML() {
         </div>
         
         <div class="flex flex-col gap-2">
-          <a href="checkout.html" class="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3CD46] hover:from-[#F3CD46] hover:to-[#D4AF37] text-[#0B1F3A] font-bold text-center py-3 rounded-lg shadow-lg hover:shadow-yellow-500/20 transform hover:-translate-y-0.5 transition-all duration-300">
+          <button onclick="proceedToCheckoutGuard(event)" class="w-full bg-gradient-to-r from-[#D4AF37] to-[#F3CD46] hover:from-[#F3CD46] hover:to-[#D4AF37] text-[#0B1F3A] font-bold text-center py-3 rounded-lg shadow-lg hover:shadow-yellow-500/20 transform hover:-translate-y-0.5 transition-all duration-300">
             Proceed to Checkout
-          </a>
+          </button>
           <button onclick="closeCartDrawer()" class="w-full text-center text-xs text-gray-400 hover:text-white transition-colors py-2">
             Continue Customizing
           </button>
@@ -387,6 +401,23 @@ function createCartDrawerHTML() {
   `;
   document.body.appendChild(container);
 }
+
+function proceedToCheckoutGuard(e) {
+  if (e) e.preventDefault();
+  const user = window.VDAuth ? window.VDAuth.getCurrentUser() : null;
+  if (!user) {
+    closeCartDrawer();
+    if (window.VDAuth) {
+      window.VDAuth.openAuthModal('checkout.html');
+      if (window.showNotification) {
+        window.showNotification("Please login or create an account to proceed with your order.", "info");
+      }
+    }
+  } else {
+    window.location.href = 'checkout.html';
+  }
+}
+window.proceedToCheckoutGuard = proceedToCheckoutGuard;
 
 function openCartDrawer() {
   const container = document.getElementById('cart-drawer-container');
@@ -748,6 +779,8 @@ window.showNotification = function(message, type = 'success') {
 };
 
 window.addItemToCart = function(product, quantity = 1, size = null, croppedImage = null, customization = {}) {
+  const uploadedPhotos = product.uploadedPhotos || (customization && customization.uploadedPhotos) || [];
+
   // Check if item already exists with exact same configurations (size and product ID)
   const existingIndex = window.VDEcommerce.cart.findIndex(
     item => item.productId === product.productId && item.size === size
@@ -758,6 +791,9 @@ window.addItemToCart = function(product, quantity = 1, size = null, croppedImage
     if (croppedImage) {
       window.VDEcommerce.cart[existingIndex].croppedImage = croppedImage;
     }
+    if (uploadedPhotos.length > 0) {
+      window.VDEcommerce.cart[existingIndex].uploadedPhotos = uploadedPhotos;
+    }
   } else {
     window.VDEcommerce.cart.push({
       productId: product.productId,
@@ -767,6 +803,7 @@ window.addItemToCart = function(product, quantity = 1, size = null, croppedImage
       price: product.price || product.basePrice,
       productImage: product.productImage,
       croppedImage: croppedImage,
+      uploadedPhotos: uploadedPhotos,
       size: size,
       quantity: quantity,
       customization: customization

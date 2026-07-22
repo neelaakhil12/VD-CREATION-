@@ -20,53 +20,58 @@ try {
     $listener.Start()
     
     while ($listener.IsListening) {
-        $context = $listener.GetContext()
-        $request = $context.Request
-        $response = $context.Response
-        
-        # Extract path
-        $urlPath = $request.Url.LocalPath
-        if ($urlPath -eq "/") {
-            $urlPath = "/index.html"
-        }
-        
-        # Build local path
-        $cleanPath = $urlPath.Replace("/", "\").TrimStart("\")
-        $filePath = Join-Path $webRoot $cleanPath
-        
-        if (Test-Path $filePath -PathType Leaf) {
-            # Map Content Type
-            $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
-            $contentType = switch ($ext) {
-                ".html" { "text/html; charset=utf-8" }
-                ".css"  { "text/css; charset=utf-8" }
-                ".js"   { "application/javascript; charset=utf-8" }
-                ".png"  { "image/png" }
-                ".jpg"  { "image/jpeg" }
-                ".jpeg" { "image/jpeg" }
-                ".webp" { "image/webp" }
-                ".svg"  { "image/svg+xml" }
-                default { "application/octet-stream" }
+        try {
+            $context = $listener.GetContext()
+            $request = $context.Request
+            $response = $context.Response
+            
+            # Extract path
+            $urlPath = $request.Url.LocalPath
+            if ($urlPath -eq "/") {
+                $urlPath = "/index.html"
             }
             
-            $response.ContentType = $contentType
+            # Build local path
+            $cleanPath = $urlPath.Replace("/", "\").TrimStart("\")
+            $filePath = Join-Path $webRoot $cleanPath
             
-            # Read bytes and send
-            $bytes = [System.IO.File]::ReadAllBytes($filePath)
-            $response.ContentLength64 = $bytes.Length
-            $response.OutputStream.Write($bytes, 0, $bytes.Length)
-            Write-Host "[200 OK] Served: $urlPath" -ForegroundColor Gray
-        } else {
-            $response.StatusCode = 404
-            $response.ContentType = "text/plain"
-            $msg = "404 Not Found: $urlPath"
-            $bytes = [System.Text.Encoding]::UTF8.GetBytes($msg)
-            $response.ContentLength64 = $bytes.Length
-            $response.OutputStream.Write($bytes, 0, $bytes.Length)
-            Write-Host "[404 Not Found] File missing: $urlPath" -ForegroundColor Red
+            if (Test-Path $filePath -PathType Leaf) {
+                # Map Content Type
+                $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
+                $contentType = switch ($ext) {
+                    ".html" { "text/html; charset=utf-8" }
+                    ".css"  { "text/css; charset=utf-8" }
+                    ".js"   { "application/javascript; charset=utf-8" }
+                    ".png"  { "image/png" }
+                    ".jpg"  { "image/jpeg" }
+                    ".jpeg" { "image/jpeg" }
+                    ".webp" { "image/webp" }
+                    ".svg"  { "image/svg+xml" }
+                    default { "application/octet-stream" }
+                }
+                
+                $response.ContentType = $contentType
+                
+                # Read bytes and send
+                $bytes = [System.IO.File]::ReadAllBytes($filePath)
+                $response.ContentLength64 = $bytes.Length
+                $response.OutputStream.Write($bytes, 0, $bytes.Length)
+                Write-Host "[200 OK] Served: $urlPath" -ForegroundColor Gray
+            } else {
+                $response.StatusCode = 404
+                $response.ContentType = "text/plain"
+                $msg = "404 Not Found: $urlPath"
+                $bytes = [System.Text.Encoding]::UTF8.GetBytes($msg)
+                $response.ContentLength64 = $bytes.Length
+                $response.OutputStream.Write($bytes, 0, $bytes.Length)
+                Write-Host "[404 Not Found] File missing: $urlPath" -ForegroundColor Red
+            }
+            
+            $response.Close()
         }
-        
-        $response.Close()
+        catch {
+            Write-Host "Error serving request: $_" -ForegroundColor Yellow
+        }
     }
 }
 catch {

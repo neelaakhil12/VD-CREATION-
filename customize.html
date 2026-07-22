@@ -75,7 +75,7 @@
           </div>
 
           <!-- Dynamic Aspect-Ratio Frame Container -->
-          <div id="customizer-frame-outer-wrapper" class="relative mx-auto transition-all duration-300 flex items-center justify-center w-[300px] h-[300px] my-6">
+          <div id="customizer-frame-outer-wrapper" class="relative mx-auto transition-all duration-300 flex items-center justify-center w-[300px] h-[300px] my-6 max-w-full">
             <!-- Injected border frame wrapper -->
             <div id="customizer-frame-preview" class="w-full h-full frame-acrylic flex items-center justify-center overflow-hidden">
               
@@ -96,6 +96,37 @@
                 </div>
                 <!-- Dynamic Image -->
                 <img id="customizer-preview-img" class="hidden w-full h-full object-cover origin-center" src="#" alt="Custom Photo Preview">
+                
+                <!-- Blue Crop Guide Overlay -->
+                <div id="customizer-crop-guide" class="absolute inset-0 border-2 border-dashed border-blue-500 pointer-events-none hidden z-20">
+                  <div class="absolute top-0 left-0 w-3.5 h-3.5 border-t-4 border-l-4 border-blue-500"></div>
+                  <div class="absolute top-0 right-0 w-3.5 h-3.5 border-t-4 border-r-4 border-blue-500"></div>
+                  <div class="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-4 border-l-4 border-blue-500"></div>
+                  <div class="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-4 border-r-4 border-blue-500"></div>
+                </div>
+              </div>
+
+              <!-- Frame overlay image for custom frame templates -->
+              <img id="customizer-frame-overlay" class="absolute inset-0 w-full h-full object-fill pointer-events-none z-10 hidden" src="" alt="Frame Overlay">
+            </div>
+
+            <!-- Canva-style Transform Box (outside preview container to prevent clipping of handles) -->
+            <div id="customizer-transform-box" class="absolute w-full h-full pointer-events-none hidden border-2 border-purple-500 z-30 select-none">
+              <!-- Corner Circle Handles (visible & pointer-events-auto) -->
+              <div data-handle="tl" class="absolute w-4 h-4 rounded-full bg-white border-2 border-purple-500 -top-2 -left-2 cursor-nwse-resize pointer-events-auto shadow-md"></div>
+              <div data-handle="tr" class="absolute w-4 h-4 rounded-full bg-white border-2 border-purple-500 -top-2 -right-2 cursor-nesw-resize pointer-events-auto shadow-md"></div>
+              <div data-handle="bl" class="absolute w-4 h-4 rounded-full bg-white border-2 border-purple-500 -bottom-2 -left-2 cursor-nesw-resize pointer-events-auto shadow-md"></div>
+              <div data-handle="br" class="absolute w-4 h-4 rounded-full bg-white border-2 border-purple-500 -bottom-2 -right-2 cursor-nwse-resize pointer-events-auto shadow-md"></div>
+
+              <!-- Edge Capsule Handles (visible & pointer-events-auto) -->
+              <div data-handle="t" class="absolute w-6 h-2 rounded-full bg-white border-2 border-purple-500 -top-1 left-1/2 -translate-x-1/2 cursor-ns-resize pointer-events-auto shadow-md"></div>
+              <div data-handle="b" class="absolute w-6 h-2 rounded-full bg-white border-2 border-purple-500 -bottom-1 left-1/2 -translate-x-1/2 cursor-ns-resize pointer-events-auto shadow-md"></div>
+              <div data-handle="l" class="absolute w-2 h-6 rounded-full bg-white border-2 border-purple-500 top-1/2 -translate-y-1/2 -left-1 cursor-ew-resize pointer-events-auto shadow-md"></div>
+              <div data-handle="r" class="absolute w-2 h-6 rounded-full bg-white border-2 border-purple-500 top-1/2 -translate-y-1/2 -right-1 cursor-ew-resize pointer-events-auto shadow-md"></div>
+
+              <!-- Rotation Handle (Circular button with reload/rotate icon, positioned on the right) -->
+              <div data-handle="rotate" class="absolute -right-12 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-slate-200 shadow-lg cursor-grab pointer-events-auto flex items-center justify-center text-slate-700 hover:text-purple-600 hover:scale-105 active:cursor-grabbing transition-all">
+                <i class="fas fa-rotate text-[10px]"></i>
               </div>
             </div>
           </div>
@@ -193,15 +224,19 @@
               <!-- Drag Zone Image Upload -->
               <div class="space-y-1.5 pt-2">
                 <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">5. Upload Your Image</span>
+                <!-- Default single dropzone -->
                 <div id="customizer-drop-zone" class="border-2 border-dashed border-slate-800 hover:border-[#D4AF37] bg-slate-950/40 p-5 rounded-2xl text-center cursor-pointer transition-all duration-300 group">
-                  <input type="file" id="customizer-file-input" accept="image/*" class="hidden">
                   <div class="space-y-1.5 pointer-events-none">
                     <i class="fas fa-cloud-upload-alt text-xl text-gray-500 group-hover:text-[#D4AF37] transition-colors"></i>
                     <p class="text-[11px] font-semibold">Drag and drop or <span class="text-[#D4AF37]">browse files</span></p>
                     <p class="text-[9px] text-gray-500">JPG, PNG, WebP up to 10MB</p>
                   </div>
                 </div>
-              </div>
+
+                <!-- Collage upload slots container -->
+                <div id="customizer-collage-uploads-container" class="hidden space-y-2.5 max-h-80 overflow-y-auto pr-1"></div>
+
+                <input type="file" id="customizer-file-input" class="hidden" accept="image/*">
             </div>
           </div>
 
@@ -239,24 +274,7 @@
             <p class="text-[9px] text-gray-500 text-center leading-relaxed"><i class="fas fa-info-circle mr-1"></i> Standard lifetime print shine guarantee. Free replacement in case of delivery breaks.</p>
           </div>
 
-          <!-- Shipping Zip check box -->
-          <div class="bg-navy-900/60 border border-slate-800 p-6 rounded-3xl backdrop-blur-md space-y-4">
-            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Check Delivery PIN Code</h4>
-            <div class="flex items-center space-x-2 bg-slate-950 rounded-xl border border-slate-800 p-1.5">
-              <input type="text" id="zip-check-input" placeholder="Enter 6-digit Indian PIN Code" class="bg-transparent text-white text-xs px-3 focus:outline-none w-full">
-              <button id="zip-check-btn" class="bg-[#13294B] hover:bg-[#D4AF37] hover:text-[#0B1F3A] text-white font-bold text-xs py-2 px-4 rounded-lg transition-colors whitespace-nowrap">Check</button>
-            </div>
-            <div id="zip-check-output" class="hidden"></div>
-          </div>
 
-          <!-- Product description info tabs -->
-          <div class="bg-navy-900/60 border border-slate-800 p-6 rounded-3xl backdrop-blur-md space-y-4">
-            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Product Specifications</h4>
-            <p id="config-desc" class="text-[11px] text-gray-400 leading-relaxed"></p>
-            <ul id="config-features" class="text-[10px] text-gray-400 space-y-2 pt-2 border-t border-slate-800/80">
-              <!-- dynamic specs list -->
-            </ul>
-          </div>
 
         </div>
 
@@ -280,12 +298,13 @@
   </script>
 
   <!-- Global App JS -->
+  <script src="js/auth.js"></script>
   <script src="js/app.js"></script>
   
   <!-- Catalog references for database access in customizer -->
-  <script src="js/catalog.js"></script>
+  <script src="js/catalog.js?v=1.0.4"></script>
 
   <!-- Customizer UI Engine -->
-  <script src="js/customizer.js"></script>
+  <script src="js/customizer.js?v=1.1.1"></script>
 </body>
 </html>

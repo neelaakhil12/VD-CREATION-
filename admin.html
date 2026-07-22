@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | VD CREATION</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              700: '#1b2a47',
+              800: '#0f1c3f',
+              900: '#070e27',
+              950: '#030718',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #030718;
+      color: #f8fafc;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070e27;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1b2a47;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D4AF37;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col antialiased">
+
+  <!-- ==================================================================== -->
+  <!-- 1. LOGIN SCREEN -->
+  <!-- ==================================================================== -->
+  <div id="login-container" class="flex-grow flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-navy-900/60 border border-slate-800/80 p-8 rounded-3xl backdrop-blur-md shadow-2xl space-y-6">
+      <div class="text-center space-y-2">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#D4AF37]/10 text-[#D4AF37] mb-2">
+          <i class="fa-solid fa-lock-open text-2xl"></i>
+        </div>
+        <h2 class="text-2xl font-extrabold tracking-tight text-white">VD CREATION</h2>
+        <p class="text-xs text-gray-400">ADMIN CONTROL CENTER LOG IN</p>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        <div class="space-y-1">
+          <label for="login-email" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Email Address</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500"><i class="fa-solid fa-envelope text-xs"></i></span>
+            <input type="email" id="login-email" required class="w-full pl-9 pr-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="admin@vdcreation.com">
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="flex items-center justify-between">
+            <label for="login-password" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Password</label>
+            <button type="button" id="forgot-password-btn" onclick="showForgotPasswordForm(event)" class="text-[10px] text-[#D4AF37] hover:underline font-semibold focus:outline-none">Forgot Password?</button>
+          </div>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500"><i class="fa-solid fa-key text-xs"></i></span>
+            <input type="password" id="login-password" required class="w-full pl-9 pr-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="••••••••">
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-xs font-bold uppercase tracking-widest py-3 rounded-xl transition-all shadow-lg hover:shadow-[#D4AF37]/20">
+          Sign In Securely
+        </button>
+      </form>
+
+      <!-- Forgot Password Form (Hidden by default) -->
+      <form id="forgot-password-form" class="space-y-4 hidden" onsubmit="handleForgotPasswordSubmit(event)">
+        <div class="text-center space-y-1">
+          <h3 class="text-sm font-bold text-[#D4AF37] uppercase">Reset Admin Password</h3>
+          <p class="text-[10px] text-gray-400">Enter your email to receive a reset link & 6-digit OTP code via Nodemailer SMTP</p>
+        </div>
+        <div class="space-y-1">
+          <label for="forgot-email" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Admin Email Address</label>
+          <input type="email" id="forgot-email" required value="vdcreationz02@gmail.com" class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="vdcreationz02@gmail.com">
+        </div>
+        <button type="submit" class="w-full bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-xs font-bold uppercase tracking-widest py-3 rounded-xl transition-all shadow-lg">
+          Send Password Reset Email
+        </button>
+        <button type="button" id="back-to-login-btn" onclick="hideForgotPasswordForm(event)" class="w-full text-center text-xs text-gray-400 hover:text-white">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Back to Login
+        </button>
+      </form>
+
+      <!-- Reset Password Form (Hidden by default) -->
+      <form id="reset-password-form" class="space-y-4 hidden" onsubmit="handleResetPasswordSubmit(event)">
+        <div class="text-center space-y-1">
+          <h3 class="text-sm font-bold text-[#D4AF37] uppercase">Set New Admin Password</h3>
+          <p class="text-[10px] text-gray-400">Enter 6-digit OTP or Token from email & your new password</p>
+        </div>
+        <div class="space-y-1">
+          <label for="reset-token-input" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">6-Digit OTP Code / Token</label>
+          <input type="text" id="reset-token-input" required class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-center text-sm font-bold tracking-widest rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="123456">
+        </div>
+        <div class="space-y-1">
+          <label for="reset-new-password" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">New Admin Password</label>
+          <input type="password" id="reset-new-password" required minlength="6" class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="Minimum 6 characters">
+        </div>
+        <button type="submit" class="w-full bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-xs font-bold uppercase tracking-widest py-3 rounded-xl transition-all shadow-lg">
+          Save New Password & Login
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================================================================== -->
+  <!-- 2. DASHBOARD VIEW (Hidden by default) -->
+  <!-- ==================================================================== -->
+  <div id="dashboard-container" class="hidden h-full flex flex-col md:flex-row">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="w-full md:w-64 bg-navy-950 border-r border-slate-800/80 flex flex-col justify-between">
+      <div class="p-6 space-y-8">
+        <!-- Logo Header -->
+        <div class="flex items-center space-x-3 pb-6 border-b border-slate-800/55">
+          <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center">
+            <i class="fa-solid fa-sliders text-sm"></i>
+          </div>
+          <div>
+            <h1 class="text-sm font-extrabold text-white uppercase tracking-wider">VD CREATION</h1>
+            <span class="text-[9px] text-gray-500 font-semibold tracking-widest uppercase">Admin Panel</span>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs Links -->
+        <nav class="space-y-1.5" id="nav-tabs">
+          <a href="#" data-tab="overview" class="tab-link flex items-center space-x-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-[#D4AF37] bg-[#D4AF37]/10 transition-all">
+            <i class="fa-solid fa-chart-line text-sm w-5 text-center"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" data-tab="categories" class="tab-link flex items-center space-x-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white hover:bg-slate-900/50 transition-all">
+            <i class="fa-solid fa-tags text-sm w-5 text-center"></i>
+            <span>Categories</span>
+          </a>
+          <a href="#" data-tab="frames" class="tab-link flex items-center space-x-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white hover:bg-slate-900/50 transition-all">
+            <i class="fa-solid fa-image text-sm w-5 text-center"></i>
+            <span>Photo Frames</span>
+          </a>
+          <a href="#" data-tab="orders" class="tab-link flex items-center space-x-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-white hover:bg-slate-900/50 transition-all relative">
+            <i class="fa-solid fa-shopping-bag text-sm w-5 text-center"></i>
+            <span>Orders</span>
+            <span id="orders-badge" class="hidden absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full">0</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Logout block -->
+      <div class="p-6 border-t border-slate-800/55">
+        <div class="flex items-center justify-between">
+          <div class="truncate mr-3">
+            <p id="admin-user-email" class="text-[10px] text-gray-400 truncate font-semibold"></p>
+            <span class="text-[9px] text-[#D4AF37] font-semibold uppercase tracking-wider">Super Administrator</span>
+          </div>
+          <button id="logout-btn" class="text-gray-500 hover:text-red-400 transition-colors p-2" title="Sign Out">
+            <i class="fa-solid fa-power-off text-base"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow overflow-y-auto p-6 md:p-8 space-y-6">
+      
+      <!-- ========================================== -->
+      <!-- TAB CONTENT: OVERVIEW (DASHBOARD) -->
+      <!-- ========================================== -->
+      <div id="tab-overview" class="tab-content space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
+          <div>
+            <h2 class="text-xl font-extrabold text-white tracking-tight uppercase">Overview Dashboard</h2>
+            <p class="text-xs text-gray-400">Today's metrics and order summaries.</p>
+          </div>
+          <div class="text-xs text-gray-400 bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 inline-flex items-center space-x-2">
+            <i class="fa-regular fa-clock text-[#D4AF37]"></i>
+            <span id="dashboard-time">Live Status</span>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Todays Revenue Card -->
+          <div class="bg-navy-900/40 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Today's Revenue</span>
+              <p class="text-2xl font-extrabold text-[#D4AF37]" id="stat-today-revenue">₹0</p>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] flex items-center justify-center">
+              <i class="fa-solid fa-coins text-lg"></i>
+            </div>
+          </div>
+          <!-- Total Revenue Card -->
+          <div class="bg-navy-900/40 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Total Revenue</span>
+              <p class="text-2xl font-extrabold text-green-400" id="stat-total-revenue">₹0</p>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center">
+              <i class="fa-solid fa-indian-rupee-sign text-lg"></i>
+            </div>
+          </div>
+          <!-- Pending Orders Card -->
+          <div class="bg-navy-900/40 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Pending Orders</span>
+              <p class="text-2xl font-extrabold text-yellow-400" id="stat-pending-orders">0</p>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center">
+              <i class="fa-solid fa-spinner fa-spin text-lg"></i>
+            </div>
+          </div>
+          <!-- Completed Orders Card -->
+          <div class="bg-navy-900/40 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
+            <div class="space-y-1">
+              <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Completed Orders</span>
+              <p class="text-2xl font-extrabold text-blue-400" id="stat-completed-orders">0</p>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
+              <i class="fa-solid fa-circle-check text-lg"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders Table Preview -->
+        <div class="bg-navy-900/40 border border-slate-800 rounded-2xl overflow-hidden">
+          <div class="p-5 border-b border-slate-800/80 flex items-center justify-between">
+            <h3 class="text-xs font-bold text-white uppercase tracking-widest">Recent Incoming Orders</h3>
+            <button onclick="switchTab('orders')" class="text-xs text-[#D4AF37] hover:underline font-semibold">View All Orders</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800/50 bg-slate-950/40 text-[10px] text-gray-400 uppercase font-semibold">
+                  <th class="p-4">Customer</th>
+                  <th class="p-4">Phone</th>
+                  <th class="p-4">Date</th>
+                  <th class="p-4">Amount</th>
+                  <th class="p-4">Status</th>
+                </tr>
+              </thead>
+              <tbody id="recent-orders-list">
+                <tr>
+                  <td colspan="5" class="p-8 text-center text-xs text-gray-500">Loading incoming orders data...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB CONTENT: CATEGORIES -->
+      <!-- ========================================== -->
+      <div id="tab-categories" class="tab-content hidden space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+          <div>
+            <h2 class="text-xl font-extrabold text-white tracking-tight uppercase">Manage Categories</h2>
+            <p class="text-xs text-gray-400">Configure frame filters on the services catalog page.</p>
+          </div>
+          <button onclick="openCategoryModal()" class="bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-[10px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shadow-md">
+            <i class="fa-solid fa-plus mr-1"></i> Add Category
+          </button>
+        </div>
+
+        <!-- Categories Table Grid -->
+        <div class="bg-navy-900/40 border border-slate-800 rounded-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800/50 bg-slate-950/40 text-[10px] text-gray-400 uppercase font-semibold">
+                  <th class="p-4">Category Slug ID</th>
+                  <th class="p-4">Display Name</th>
+                  <th class="p-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-categories-list">
+                <tr>
+                  <td colspan="3" class="p-8 text-center text-xs text-gray-500">Loading categories database...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB CONTENT: PHOTO FRAMES (PRODUCTS) -->
+      <!-- ========================================== -->
+      <div id="tab-frames" class="tab-content hidden space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+          <div>
+            <h2 class="text-xl font-extrabold text-white tracking-tight uppercase">Manage Photo Frames</h2>
+            <p class="text-xs text-gray-400">Add, edit, or remove frame products in the customizer and store catalog.</p>
+          </div>
+          <button onclick="openProductModal()" class="bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-[10px] font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shadow-md">
+            <i class="fa-solid fa-plus mr-1"></i> Add New Frame
+          </button>
+        </div>
+
+        <!-- Products List Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="admin-products-list">
+          <div class="col-span-full py-8 text-center text-xs text-gray-500">Loading frame catalog...</div>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- TAB CONTENT: ORDERS -->
+      <!-- ========================================== -->
+      <div id="tab-orders" class="tab-content hidden space-y-6">
+        <div class="border-b border-slate-800/80 pb-4">
+          <h2 class="text-xl font-extrabold text-white tracking-tight uppercase">Customer Orders</h2>
+          <p class="text-xs text-gray-400">Inspect purchased customer orders and download cropped custom layout print images.</p>
+        </div>
+
+        <div class="space-y-4" id="admin-orders-list">
+          <div class="py-8 text-center text-xs text-gray-500">Loading customer orders database...</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ==================================================================== -->
+  <!-- MODAL: ADD / EDIT CATEGORY -->
+  <!-- ==================================================================== -->
+  <div id="category-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-md bg-navy-900 border border-slate-800 p-6 rounded-3xl shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+        <h3 class="text-xs font-bold text-white uppercase tracking-widest" id="category-modal-title">Add New Category</h3>
+        <button onclick="closeCategoryModal()" class="text-gray-500 hover:text-white p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="category-form" class="space-y-4">
+        <input type="hidden" id="category-edit-mode" value="false">
+        
+        <div class="space-y-1">
+          <label for="category-id" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Category Slug ID (Short ID)</label>
+          <input type="text" id="category-id" required class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="e.g. acrylic, wood-classic">
+          <p class="text-[9px] text-gray-500">Must be lowercase, unique, and contain no spaces.</p>
+        </div>
+
+        <div class="space-y-1">
+          <label for="category-name" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Display Name</label>
+          <input type="text" id="category-name" required class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="e.g. Acrylic Frames">
+        </div>
+
+        <button type="submit" class="w-full bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-xs font-bold uppercase tracking-widest py-3 rounded-xl transition-all shadow-md">
+          Save Category
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================================================================== -->
+  <!-- MODAL: ADD / EDIT PRODUCT -->
+  <!-- ==================================================================== -->
+  <div id="product-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-start justify-center p-4 hidden overflow-y-auto">
+    <div class="w-full max-w-2xl bg-navy-900 border border-slate-800 p-6 rounded-3xl shadow-2xl space-y-6 my-8">
+      <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+        <h3 class="text-xs font-bold text-white uppercase tracking-widest" id="product-modal-title">Add New Photo Frame</h3>
+        <button onclick="closeProductModal()" class="text-gray-500 hover:text-white p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Unsaved Draft Recovery Alert -->
+      <div id="draft-alert" class="hidden flex items-center justify-between p-3.5 rounded-2xl border border-yellow-500/25 bg-yellow-500/10 text-yellow-400 text-xs animate-fadeIn">
+        <div class="flex items-center space-x-2.5">
+          <i class="fa-solid fa-file-signature text-sm"></i>
+          <span>We found an unsaved draft for this frame. Restore it?</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button type="button" onclick="restoreProductDraft()" class="bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-[10px] font-bold px-3 py-1 rounded-xl transition-all">Restore</button>
+          <button type="button" onclick="discardProductDraft()" class="text-gray-400 hover:text-white text-[10px] font-bold px-2 py-1 transition-all">Discard</button>
+        </div>
+      </div>
+
+      <form id="product-form" class="space-y-4">
+        <input type="hidden" id="product-edit-mode" value="false">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label for="product-id" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Product Slug ID</label>
+            <input type="text" id="product-id" required class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="e.g. classic-wood-gold">
+            <p class="text-[9px] text-gray-500">Lowercase, no spaces.</p>
+          </div>
+
+          <div class="space-y-1">
+            <label for="product-name" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Frame Name</label>
+            <input type="text" id="product-name" required class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="e.g. Classic Gold Wood Frame">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label for="product-category" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Frame Category</label>
+            <select id="product-category" required class="w-full bg-slate-950 border border-slate-800 text-white text-xs rounded-xl p-3 focus:outline-none focus:border-[#D4AF37] cursor-pointer">
+              <!-- dynamic categories -->
+            </select>
+          </div>
+
+          <div class="space-y-1">
+            <label for="product-price" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Starting Base Price (₹)</label>
+            <input type="number" id="product-price" required class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="e.g. 299">
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label for="product-description" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Description</label>
+          <textarea id="product-description" rows="2" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="Write a catchy frame description..."></textarea>
+        </div>
+
+        <!-- Dynamic Size Specifications & Feature check array -->
+        <div class="grid grid-cols-1 gap-4">
+          <div class="space-y-1">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <label class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Available Sizes & Prices (₹)</label>
+              <div class="flex items-center space-x-1.5">
+                <input type="text" id="custom-size-input" placeholder="e.g. 12x24" class="px-2 py-1 bg-slate-950 border border-slate-800 text-white text-[10px] rounded-lg focus:outline-none focus:border-[#D4AF37] w-20">
+                <button type="button" onclick="addNewCustomSize()" class="bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-[10px] font-bold px-2.5 py-1 rounded-lg transition-all">
+                  + Add Size
+                </button>
+              </div>
+            </div>
+            <div id="size-prices-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 bg-slate-950/40 p-3.5 rounded-xl border border-slate-800/60 max-h-48 overflow-y-auto">
+              <!-- Predefined sizes with checkboxes & pricing input fields will be dynamically rendered here -->
+            </div>
+            <p class="text-[9px] text-gray-500">Check the sizes this product provides, and set its price. Unchecked sizes will not be selectable by users.</p>
+          </div>
+
+          <div class="space-y-1">
+            <label for="product-features" class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Features (Comma Separated)</label>
+            <input type="text" id="product-features" class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="e.g. Solid Oak Stand, Glass Protection">
+          </div>
+        </div>
+
+        <!-- Crop Alignment Coordinates (for empty frame overlays) -->
+        <div class="grid grid-cols-4 gap-3 bg-slate-950/40 p-4 rounded-2xl border border-slate-800/60">
+          <div class="col-span-full">
+            <span class="text-[9px] text-[#D4AF37] font-extrabold uppercase tracking-widest">Crop Window Alignment Coordinates (%)</span>
+            <p class="text-[8px] text-gray-500">Specify positioning percentages for the transparent window center of empty frame overlays.</p>
+          </div>
+          <div class="space-y-1">
+            <label for="product-crop-left" class="text-[9px] text-gray-400 font-bold uppercase">Left (%)</label>
+            <input type="number" id="product-crop-left" step="any" class="w-full px-2 py-1.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-lg focus:outline-none" value="0">
+          </div>
+          <div class="space-y-1">
+            <label for="product-crop-top" class="text-[9px] text-gray-400 font-bold uppercase">Top (%)</label>
+            <input type="number" id="product-crop-top" step="any" class="w-full px-2 py-1.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-lg focus:outline-none" value="0">
+          </div>
+          <div class="space-y-1">
+            <label for="product-crop-width" class="text-[9px] text-gray-400 font-bold uppercase">Width (%)</label>
+            <input type="number" id="product-crop-width" step="any" class="w-full px-2 py-1.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-lg focus:outline-none" value="100">
+          </div>
+          <div class="space-y-1">
+            <label for="product-crop-height" class="text-[9px] text-gray-400 font-bold uppercase">Height (%)</label>
+            <input type="number" id="product-crop-height" step="any" class="w-full px-2 py-1.5 bg-slate-950 border border-slate-800 text-white text-xs rounded-lg focus:outline-none" value="100">
+          </div>
+        </div>
+
+        <!-- Multi-Photo Collage Mode Toggle & Configuration -->
+        <div class="space-y-3 bg-slate-950/40 p-4 rounded-2xl border border-slate-800/60">
+          <div class="flex items-center justify-between">
+            <div class="space-y-0.5">
+              <label for="product-collage-toggle" class="text-[10px] text-white font-extrabold uppercase tracking-wider cursor-pointer">
+                Multi-Photo Collage Frame?
+              </label>
+              <p class="text-[9px] text-gray-500">Enable this toggle ONLY when adding multi-photo collage frames (e.g. 2 to 6 photos).</p>
+            </div>
+            <!-- Toggle Switch -->
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="product-collage-toggle" onchange="toggleCollageSlotOptions(this.checked)" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#D4AF37]"></div>
+            </label>
+          </div>
+
+          <!-- Expandable Photo Slots Selector (Hidden when toggle is OFF) -->
+          <div id="product-slots-container" class="hidden space-y-2.5 pt-2 border-t border-slate-800/60 transition-all">
+            <div class="flex items-center justify-between">
+              <label for="product-slots" class="text-[9px] text-[#D4AF37] font-extrabold uppercase tracking-widest">How Many Photo Upload Slots Required?</label>
+              <span class="text-[8px] bg-[#D4AF37]/15 text-[#D4AF37] px-2 py-0.5 rounded font-bold uppercase">Manual Photo Counter</span>
+            </div>
+
+            <div class="flex items-center space-x-3">
+              <div class="relative flex-grow">
+                <input type="number" id="product-slots" min="2" max="50" value="3" oninput="updateSlotCountPreview(this.value)" class="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 text-white text-xs font-bold rounded-xl focus:outline-none focus:border-[#D4AF37]" placeholder="Type exact photo count (e.g. 3, 5, 8)">
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 font-semibold">Photos</span>
+              </div>
+              
+              <!-- Quick Count Preset Buttons -->
+              <div class="flex items-center space-x-1 flex-shrink-0">
+                <button type="button" onclick="setProductSlots(2)" class="px-2.5 py-2 rounded-lg bg-navy-800 hover:bg-[#D4AF37] hover:text-navy-950 border border-slate-700 text-xs font-bold transition-all">2</button>
+                <button type="button" onclick="setProductSlots(3)" class="px-2.5 py-2 rounded-lg bg-navy-800 hover:bg-[#D4AF37] hover:text-navy-950 border border-slate-700 text-xs font-bold transition-all">3</button>
+                <button type="button" onclick="setProductSlots(4)" class="px-2.5 py-2 rounded-lg bg-navy-800 hover:bg-[#D4AF37] hover:text-navy-950 border border-slate-700 text-xs font-bold transition-all">4</button>
+                <button type="button" onclick="setProductSlots(5)" class="px-2.5 py-2 rounded-lg bg-navy-800 hover:bg-[#D4AF37] hover:text-navy-950 border border-slate-700 text-xs font-bold transition-all">5</button>
+                <button type="button" onclick="setProductSlots(6)" class="px-2.5 py-2 rounded-lg bg-navy-800 hover:bg-[#D4AF37] hover:text-navy-950 border border-slate-700 text-xs font-bold transition-all">6</button>
+              </div>
+            </div>
+
+            <p id="slots-preview-hint" class="text-[9px] text-green-400 font-medium">
+              <i class="fa-solid fa-check-circle mr-1"></i> Website customizer will show <span id="slots-hint-count" class="font-bold text-white">3</span> photo upload options (Image 1, Image 2, Image 3...).
+            </p>
+          </div>
+        </div>
+
+
+
+        <!-- Cloudinary Image Upload inputs -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-800/80 pt-4">
+          <!-- Cover Image Upload -->
+          <div class="space-y-2">
+            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">1. Catalog Cover Image</span>
+            <div class="flex items-center space-x-3">
+              <input type="file" id="product-img-file" class="hidden" accept="image/*" onchange="uploadImageToServer(this, 'cover')">
+              <button type="button" onclick="document.getElementById('product-img-file').click()" class="bg-navy-700 hover:bg-[#D4AF37]/10 text-white hover:text-[#D4AF37] border border-slate-700/60 text-[10px] font-bold uppercase py-2 px-4 rounded-xl transition-all">
+                <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Choose File
+              </button>
+              <div id="product-cover-loader" class="hidden text-xs text-[#D4AF37]"><i class="fa-solid fa-circle-notch fa-spin mr-1"></i>Uploading...</div>
+            </div>
+            <input type="text" id="product-image-url" required class="w-full px-3 py-2 bg-slate-950 border border-slate-800 text-white text-[10px] rounded-xl focus:outline-none" placeholder="Cloudinary Cover URL" readonly>
+            <div id="product-cover-preview" class="w-16 h-16 rounded-xl border border-slate-800/80 overflow-hidden bg-slate-950 hidden relative group flex items-center justify-center">
+              <img src="" class="w-full h-full object-cover" id="cover-preview-img">
+              <button type="button" onclick="clearProductImage('cover')" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center text-[9px] shadow transition-colors" title="Remove Image">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Empty Frame Overlay Image Upload -->
+          <div class="space-y-2">
+            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">2. Empty Frame Template (for Customizer)</span>
+            <div class="flex items-center space-x-3">
+              <input type="file" id="product-empty-file" class="hidden" accept="image/*" onchange="uploadImageToServer(this, 'empty')">
+              <button type="button" onclick="document.getElementById('product-empty-file').click()" class="bg-navy-700 hover:bg-[#D4AF37]/10 text-white hover:text-[#D4AF37] border border-slate-700/60 text-[10px] font-bold uppercase py-2 px-4 rounded-xl transition-all">
+                <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Choose File
+              </button>
+              <div id="product-empty-loader" class="hidden text-xs text-[#D4AF37]"><i class="fa-solid fa-circle-notch fa-spin mr-1"></i>Uploading...</div>
+            </div>
+            <input type="text" id="product-empty-url" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 text-white text-[10px] rounded-xl focus:outline-none" placeholder="Cloudinary Empty Template URL (Optional)" readonly>
+            <div id="product-empty-preview" class="w-16 h-16 rounded-xl border border-slate-800/80 overflow-hidden bg-slate-950 hidden relative group flex items-center justify-center">
+              <img src="" class="w-full h-full object-cover" id="empty-preview-img">
+              <button type="button" onclick="clearProductImage('empty')" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center text-[9px] shadow transition-colors" title="Remove Image">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-[#D4AF37] hover:bg-[#bfa032] text-navy-950 text-xs font-bold uppercase tracking-widest py-3 rounded-xl transition-all shadow-md">
+          Save Photo Frame
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification Banner -->
+  <div id="admin-notification" class="fixed bottom-6 right-6 z-50 flex items-center space-x-3 px-4 py-3 rounded-xl border text-xs shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300">
+    <span id="admin-notification-icon" class="text-base"></span>
+    <p id="admin-notification-msg" class="font-bold text-white"></p>
+  </div>
+
+  <!-- Supabase client and administrative logic -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/admin.js?v=1.0.7"></script>
+</body>
+</html>
