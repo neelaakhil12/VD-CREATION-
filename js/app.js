@@ -473,7 +473,7 @@ function renderCartItems() {
     subtotal += item.price * item.quantity;
     
     // Fallback image if custom cropped image is not provided
-    const imgUrl = item.croppedImage || item.productImage || 'assets/acrylic_frame.png';
+    const imgUrl = item.croppedImage || item.productImage || 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784746242/vd_creations_static_assets/acrylic_frame.jpg';
 
     // Build frame style details
     let sizeDetails = item.size ? `Size: ${item.size} Inches` : '';

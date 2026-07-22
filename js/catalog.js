@@ -10,8 +10,8 @@ let PRODUCTS_DATABASE = [
     basePrice: 399,
     rating: 4.8,
     reviews: 120,
-    productImage: "assets/acrylic_couple.png",
-    emptyImage: "assets/acrylic_couple_empty.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746240/vd_creations_static_assets/acrylic_couple.png",
+    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746241/vd_creations_static_assets/acrylic_couple_empty.png",
     cropLeft: 9.21,
     cropTop: 5.59,
     cropWidth: 80.11,
@@ -20,8 +20,6 @@ let PRODUCTS_DATABASE = [
     sizes: ["6x9", "8x12", "10x15", "12x18"],
     features: ["Diamond Polished Edges", "High-Gloss Crystal Printing", "Couples Floating Mount System"]
   },
-
-
 
   // Normal Photo Frames
   {
@@ -32,8 +30,8 @@ let PRODUCTS_DATABASE = [
     basePrice: 299,
     rating: 4.8,
     reviews: 95,
-    productImage: "assets/normal_black_wood.png",
-    emptyImage: "assets/normal_black_wood_empty.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746249/vd_creations_static_assets/normal_black_wood.png",
+    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746250/vd_creations_static_assets/normal_black_wood_empty.png",
     cropLeft: 21.12,
     cropTop: 24.82,
     cropWidth: 57.66,
@@ -50,8 +48,8 @@ let PRODUCTS_DATABASE = [
     basePrice: 299,
     rating: 4.7,
     reviews: 110,
-    productImage: "assets/normal_wood_light.png",
-    emptyImage: "assets/normal_wood_light_empty.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746251/vd_creations_static_assets/normal_wood_light.png",
+    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746252/vd_creations_static_assets/normal_wood_light_empty.png",
     cropLeft: 21.05,
     cropTop: 11.88,
     cropWidth: 50.00,

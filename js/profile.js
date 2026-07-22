@@ -260,7 +260,7 @@ window.VDProfile = {
             ${items.map(item => `
               <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 gap-4">
                 <div class="flex items-center space-x-4">
-                  <img src="${item.croppedImage || item.productImage || 'assets/acrylic_couple.png'}" class="w-16 h-16 object-cover rounded-xl border border-slate-800 bg-slate-900">
+                  <img src="${item.croppedImage || item.productImage || 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784746240/vd_creations_static_assets/acrylic_couple.png'}" class="w-16 h-16 object-cover rounded-xl border border-slate-800 bg-slate-900">
                   <div class="space-y-1 text-xs">
                     <h4 class="font-bold text-white">${item.productName || 'Custom Photo Frame'}</h4>
                     <p class="text-[11px] text-gray-400">Size: <span class="text-white">${item.size || 'Standard'}</span> | Qty: ${item.quantity || 1}</p>

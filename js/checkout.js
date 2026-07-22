@@ -41,7 +41,7 @@ function renderCheckoutSummary() {
     const itemTotal = item.price * item.quantity;
     checkoutSubtotal += itemTotal;
     
-    const imgUrl = item.croppedImage || item.productImage || 'assets/acrylic_frame.png';
+    const imgUrl = item.croppedImage || item.productImage || 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784746242/vd_creations_static_assets/acrylic_frame.jpg';
     const sizeDetails = item.size ? `Size: ${item.size} In` : '';
     const orientationDetails = item.customization && item.customization.orientation 
       ? `(${item.customization.orientation})` 

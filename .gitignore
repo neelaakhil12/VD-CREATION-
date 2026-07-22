@@ -2,5 +2,7 @@ node_modules/
 .env
 data/admin_tokens.json
 data/local_orders.json
+upload_assets.js
+cdn_assets.json
 .DS_Store
 *.log
