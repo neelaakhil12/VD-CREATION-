@@ -379,7 +379,7 @@ function bindCheckoutEvents() {
             currency: rzpData.currency || 'INR',
             name: 'VD CREATION',
             description: 'Custom Photo Frame Order Payment',
-            image: 'assets/acrylic_couple.png',
+            image: 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784747215/vd_creations_all_images/assets_acrylic_couple.png',
             order_id: rzpData.orderId,
             prefill: {
               name: name,

@@ -10,8 +10,8 @@ let PRODUCTS_DATABASE = [
     basePrice: 399,
     rating: 4.8,
     reviews: 120,
-    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746240/vd_creations_static_assets/acrylic_couple.png",
-    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746241/vd_creations_static_assets/acrylic_couple_empty.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746240/vd_creations_static_https://res.cloudinary.com/ukftgzjx/image/upload/v1784747215/vd_creations_all_images/assets_acrylic_couple.png",
+    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746241/vd_creations_static_https://res.cloudinary.com/ukftgzjx/image/upload/v1784747216/vd_creations_all_images/assets_acrylic_couple_empty.png",
     cropLeft: 9.21,
     cropTop: 5.59,
     cropWidth: 80.11,
@@ -30,8 +30,8 @@ let PRODUCTS_DATABASE = [
     basePrice: 299,
     rating: 4.8,
     reviews: 95,
-    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746249/vd_creations_static_assets/normal_black_wood.png",
-    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746250/vd_creations_static_assets/normal_black_wood_empty.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746249/vd_creations_static_https://res.cloudinary.com/ukftgzjx/image/upload/v1784747226/vd_creations_all_images/assets_normal_black_wood.png",
+    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746250/vd_creations_static_https://res.cloudinary.com/ukftgzjx/image/upload/v1784747228/vd_creations_all_images/assets_normal_black_wood_empty.png",
     cropLeft: 21.12,
     cropTop: 24.82,
     cropWidth: 57.66,
@@ -48,8 +48,8 @@ let PRODUCTS_DATABASE = [
     basePrice: 299,
     rating: 4.7,
     reviews: 110,
-    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746251/vd_creations_static_assets/normal_wood_light.png",
-    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746252/vd_creations_static_assets/normal_wood_light_empty.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746251/vd_creations_static_https://res.cloudinary.com/ukftgzjx/image/upload/v1784747229/vd_creations_all_images/assets_normal_wood_light.png",
+    emptyImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784746252/vd_creations_static_https://res.cloudinary.com/ukftgzjx/image/upload/v1784747231/vd_creations_all_images/assets_normal_wood_light_empty.png",
     cropLeft: 21.05,
     cropTop: 11.88,
     cropWidth: 50.00,
@@ -73,7 +73,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 86,
     slots: 4,
-    productImage: "image copy 7.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747260/vd_creations_all_images/root_image_copy_7.png",
     description: "A stunning black & white story collage frame featuring multiple couple photos fading into a central portrait cutout — perfect for anniversaries and love gifts.",
     sizes: ["6x9", "8x12", "10x15", "12x18"],
     features: ["B&W + Color Mixed Collage", "Custom Name & Date Text", "White Wood Frame Finish"]
@@ -87,7 +87,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 67,
     slots: 4,
-    productImage: "image copy 6.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747259/vd_creations_all_images/root_image_copy_6.png",
     description: "A glamorous bridal frame with four vertical strip photos fading into a full-color portrait below — perfect for bride gifting or bridal shower memento.",
     sizes: ["6x9", "8x12", "10x15", "12x18"],
     features: ["4-Strip to Portrait Design", "Fade-in Effect", "Custom Name Text", "Black Wood Frame"]
@@ -101,7 +101,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 108,
     slots: 3,
-    productImage: "image copy 13.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747235/vd_creations_all_images/root_image_copy_13.png",
     description: "A clean, minimal, and elegant baby birth announcement frame with icons for city, date, time, weight and height — paired with three beautiful newborn photos. White wood frame.",
     sizes: ["6x9", "8x12", "10x15", "12x18"],
     features: ["Minimalist Icon Stats Layout", "3-Photo Strip Column", "Custom Baby Name & Details", "White Wood Frame"]
@@ -115,7 +115,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 93,
     slots: 3,
-    productImage: "image copy 16.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747238/vd_creations_all_images/root_image_copy_16.png",
     description: "A soft botanical-styled newborn frame with baby name, birth date, time, weight, height and hospital details. Elegant and timeless for nursery walls. Natural wood frame.",
     sizes: ["6x9", "8x12", "10x15", "12x18"],
     features: ["Botanical Leaf Accents", "Birth Stats & Hospital Name", "3-Photo Column", "Natural Wood Frame Finish"]
@@ -129,7 +129,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 74,
     slots: 3,
-    productImage: "image copy 23.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747249/vd_creations_all_images/root_image_copy_23.png",
     description: "A fresh and modern baby announcement frame styled like a polaroid with watercolour botanical accents, baby name, date, time, weight and height details. Natural wood frame.",
     sizes: ["6x9", "8x12", "10x15"],
     features: ["Polaroid-Style Photo Layout", "Watercolour Botanical Design", "Custom Baby Name & Stats", "Natural Wood Frame"]
@@ -145,7 +145,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 73,
     slots: 2,
-    productImage: "image copy 9.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747263/vd_creations_all_images/root_image_copy_9.png",
     description: "Cinematic dual-exposure design merging couple portraits into a breathtaking landscape backdrop. A truly movie-poster style love frame. Premium black matte finish.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Dual Exposure Cinematic Effect", "Custom Text Overlay", "Premium Black Matte Frame"]
@@ -159,7 +159,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 112,
     slots: 4,
-    productImage: "image copy 10.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747232/vd_creations_all_images/root_image_copy_10.png",
     description: "A bold multi-photo collage with a vibrant central cutout couple — capturing every beautiful moment together in one dark matte frame. Black textured finish.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Multi-Photo Grid Collage", "Full Color Cutout Portrait", "Custom Quote & Name", "Black Textured Matte Frame"]
@@ -173,7 +173,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 95,
     slots: 4,
-    productImage: "image copy 11.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747233/vd_creations_all_images/root_image_copy_11.png",
     description: "A romantic heart-shaped photo collage arrangement with custom names, date and a love quote on a dark background — ideal for anniversaries and Valentine's Day.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Heart-shape Photo Arrangement", "Custom Names & Date", "Dark Romantic Background", "Black Matte Frame"]
@@ -187,7 +187,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 78,
     slots: 5,
-    productImage: "image copy 17.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747239/vd_creations_all_images/root_image_copy_17.png",
     description: "A beautiful black-and-white grid collage frame with a central color-pop couple portrait for wedding day memories. Includes couple name and wedding date. Dark matte frame.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["B&W Grid + Color Center Portrait", "Custom Name & Wedding Date", "Black Matte Frame", "Premium Zink Print Quality"]
@@ -201,7 +201,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 54,
     slots: 4,
-    productImage: "image copy 18.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747240/vd_creations_all_images/root_image_copy_18.png",
     description: "A warm-toned wedding story frame with multiple couple portraits in a stacked grid layout — capturing the romance and elegance of your big day. Black matte frame.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Multi-Photo Story Grid", "Custom Name & Wedding Date", "Wave-style Photo Cutout", "Black Matte Frame"]
@@ -215,7 +215,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 42,
     slots: 6,
-    productImage: "image copy 15.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747237/vd_creations_all_images/root_image_copy_15.png",
     description: "A luxurious dark-background wedding frame with honeycomb hexagonal photo layout, embossed calendar, and custom couple names — the perfect wedding gift. Black matte frame.",
     sizes: ["10x15", "12x18", "16x20", "18x24"],
     features: ["Hexagonal Honeycomb Layout", "Calendar with Wedding Date", "Custom Names & Quote", "Gold Accent Typography"]
@@ -229,7 +229,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 138,
     slots: 3,
-    productImage: "image copy 19.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747242/vd_creations_all_images/root_image_copy_19.png",
     description: "A vibrant birthday frame combining a large portrait photo with a birthday-month calendar and smaller photo strips. A memorable personalized birthday gift. Black matte frame.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Birthday Month Calendar", "Photo Strips Sidebar", "Custom Name & Message", "Dark Matte Background Frame"]
@@ -243,7 +243,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 96,
     slots: 3,
-    productImage: "image copy 21.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747247/vd_creations_all_images/root_image_copy_21.png",
     description: "An elegant birthday frame with vertical photo strips and a birthday-month calendar with a highlighted birthday date. Black matte frame with botanical style.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Vertical Photo Strips Layout", "Month Calendar with Highlight", "Custom Name Lettering", "Black Matte Frame"]
@@ -257,7 +257,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 72,
     slots: 4,
-    productImage: "image copy 24.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747250/vd_creations_all_images/root_image_copy_24.png",
     description: "A clean and elegant birthday frame with three top black-and-white portraits fading into a central vibrant color photo — with custom birthday text. Black matte frame.",
     sizes: ["8x12", "10x15", "12x18"],
     features: ["B&W to Color Fade Effect", "Triple Photo Panel Top", "Custom Birthday Name", "Black Matte Frame"]
@@ -271,7 +271,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 61,
     slots: 3,
-    productImage: "image copy 27.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747254/vd_creations_all_images/root_image_copy_27.png",
     description: "A stunning birthday frame with triple photo view set against a floral purple backdrop — radiating elegance with custom name and date text. Dark matte frame.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Triple Photo Composition", "Floral Bloom Background", "Custom Name & Date", "Premium Black Matte Frame"]
@@ -285,7 +285,7 @@ let PRODUCTS_DATABASE = [
     rating: 5.0,
     reviews: 164,
     slots: 3,
-    productImage: "image copy 12.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747234/vd_creations_all_images/root_image_copy_12.png",
     description: "A colorful and fun baby birth announcement frame showcasing birth date, time, weight, blood group, hospital, and parent photos — a cherished keepsake. Black matte frame.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Birth Stats Icons Layout", "Baby & Parents Photos", "Custom Name & Details", "Black Matte Frame"]
@@ -299,7 +299,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.9,
     reviews: 87,
     slots: 6,
-    productImage: "image copy 14.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747236/vd_creations_all_images/root_image_copy_14.png",
     description: "A heartwarming frame featuring six adorable baby photos in a grid with an arched center display, birth-month calendar, and custom name. Black matte frame.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["6-Photo Baby Grid Collage", "Birth Month Calendar", "Arched Center Photo", "Custom Name & Parent Message"]
@@ -313,7 +313,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 58,
     slots: 4,
-    productImage: "image copy 20.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747244/vd_creations_all_images/root_image_copy_20.png",
     description: "A striking black-and-white photo collage with a central cutout portrait — great for tributes, farewell gifts, and personal milestone celebrations. Dark matte frame.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["B&W Multi-Grid Collage", "Central Cutout Portrait", "Custom Name & Quote", "Black Matte Frame"]
@@ -327,7 +327,7 @@ let PRODUCTS_DATABASE = [
     rating: 4.8,
     reviews: 49,
     slots: 4,
-    productImage: "image copy 22.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747248/vd_creations_all_images/root_image_copy_22.png",
     description: "An elegant solo portrait frame with four rounded-edge photo strips alongside a large cutout portrait — with floral botanical accents and custom name. Dark matte frame.",
     sizes: ["8x12", "10x15", "12x18"],
     features: ["Rounded Photo Strips", "Botanical Leaf Accents", "Large Portrait Cutout", "Black Matte Frame"]
@@ -341,7 +341,7 @@ let PRODUCTS_DATABASE = [
     rating: 5.0,
     reviews: 82,
     slots: 4,
-    productImage: "image copy 26.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747252/vd_creations_all_images/root_image_copy_26.png",
     description: "A unique anniversary frame where your milestone number is filled with couple photos — set against a B&W portrait backdrop. Customize any anniversary year. Dark matte frame.",
     sizes: ["8x12", "10x15", "12x18", "16x20"],
     features: ["Number-Shaped Photo Collage", "B&W Background Portrait", "Custom Year & Anniversary Text", "Black Matte Frame"]
@@ -355,7 +355,7 @@ let PRODUCTS_DATABASE = [
     rating: 5.0,
     reviews: 47,
     slots: 3,
-    productImage: "image copy 25.png",
+    productImage: "https://res.cloudinary.com/ukftgzjx/image/upload/v1784747251/vd_creations_all_images/root_image_copy_25.png",
     description: "A stunning watercolour art-style frame that merges multiple family photos into a single painterly portrait — a museum-worthy keepsake for your home. Black matte frame.",
     sizes: ["10x15", "12x18", "16x20", "18x24", "20x30"],
     features: ["Watercolour Art Effect", "Multi-Photo Merge", "Custom Quote Text", "Premium Black Matte Frame"]
@@ -722,10 +722,10 @@ window.renderHomepageCollections = function() {
   if (!container) return;
 
   const categoriesMap = [
-    { id: 'acrylic', title: 'Acrylic Wall Photos', badge: 'Glossy Finish', link: 'customize.html?category=acrylic', defaultImg: 'image copy 9.png', desc: 'Frameless crystal-clear acrylic printing. Diamond-polished edges providing a floating premium glass finish.', price: 399, sizes: ["6x9", "8x12", "10x15", "12x18"] },
-    { id: 'matte', title: 'Zink Mate Frames', badge: 'Matte Finish', link: 'customize.html?category=matte', defaultImg: 'image copy 10.png', desc: 'Contemporary dark borders with smooth matte coating. Anti-glare and matches perfectly with modern home decors.', price: 449, sizes: ["8x12", "12x18", "18x24", "24x36"] },
-    { id: 'classic', title: 'Normal Wood Frames', badge: 'Classic Finish', link: 'customize.html?category=classic', defaultImg: 'assets/normal_black_wood.png', desc: 'Framed photo prints with synthetic black/light wood grains & clear glass protection. Timeless design.', price: 299, sizes: ["6x9", "8x12", "10x15", "12x18"] },
-    { id: 'led', title: 'Glowing LED Frames', badge: 'Glowing LED', link: 'customize.html?category=led', defaultImg: 'image copy 18.png', desc: 'Illuminated wooden frame designs. Soft, warm backlights casting a beautiful aura over family and couple portraits.', price: 699, sizes: ["6x9", "8x12", "10x15", "12x18"] }
+    { id: 'acrylic', title: 'Acrylic Wall Photos', badge: 'Glossy Finish', link: 'customize.html?category=acrylic', defaultImg: 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784747263/vd_creations_all_images/root_image_copy_9.png', desc: 'Frameless crystal-clear acrylic printing. Diamond-polished edges providing a floating premium glass finish.', price: 399, sizes: ["6x9", "8x12", "10x15", "12x18"] },
+    { id: 'matte', title: 'Zink Mate Frames', badge: 'Matte Finish', link: 'customize.html?category=matte', defaultImg: 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784747232/vd_creations_all_images/root_image_copy_10.png', desc: 'Contemporary dark borders with smooth matte coating. Anti-glare and matches perfectly with modern home decors.', price: 449, sizes: ["8x12", "12x18", "18x24", "24x36"] },
+    { id: 'classic', title: 'Normal Wood Frames', badge: 'Classic Finish', link: 'customize.html?category=classic', defaultImg: 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784747226/vd_creations_all_images/assets_normal_black_wood.png', desc: 'Framed photo prints with synthetic black/light wood grains & clear glass protection. Timeless design.', price: 299, sizes: ["6x9", "8x12", "10x15", "12x18"] },
+    { id: 'led', title: 'Glowing LED Frames', badge: 'Glowing LED', link: 'customize.html?category=led', defaultImg: 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784747240/vd_creations_all_images/root_image_copy_18.png', desc: 'Illuminated wooden frame designs. Soft, warm backlights casting a beautiful aura over family and couple portraits.', price: 699, sizes: ["6x9", "8x12", "10x15", "12x18"] }
   ];
 
   const html = categoriesMap.map((info, index) => {

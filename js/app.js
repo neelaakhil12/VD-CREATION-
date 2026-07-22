@@ -639,7 +639,7 @@ function renderWishlistItems() {
       <div class="flex items-center space-x-4 bg-slate-900/50 border border-slate-800 p-3 rounded-lg relative group hover:border-[#D4AF37]/30 transition-all duration-300">
         <!-- Thumbnail -->
         <div class="w-16 h-16 rounded overflow-hidden bg-slate-950 flex-shrink-0 border border-slate-700">
-          <img src="${item.productImage || 'assets/acrylic_frame.png'}" alt="${item.productName}" class="w-full h-full object-cover">
+          <img src="${item.productImage || 'https://res.cloudinary.com/ukftgzjx/image/upload/v1784747217/vd_creations_all_images/assets_acrylic_frame.jpg'}" alt="${item.productName}" class="w-full h-full object-cover">
         </div>
         
         <!-- Details -->
