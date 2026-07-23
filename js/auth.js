@@ -149,10 +149,32 @@ window.VDAuth = {
   },
 
   sendEmailOTP: async function(email) {
-    if (!email) throw new Error("Please enter your email address.");
+    if (!email || !email.includes('@')) {
+      throw new Error("Please enter a valid email address.");
+    }
 
-    this.generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
-    this.otpEmailTarget = email;
+    this.otpEmailTarget = email.trim();
+    let otpCode = null;
+
+    try {
+      const res = await fetch('/api/send-user-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: this.otpEmailTarget })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send OTP email.');
+      }
+      if (data.otp) {
+        otpCode = data.otp;
+      }
+    } catch(err) {
+      console.warn("Backend OTP service note:", err.message);
+      otpCode = Math.floor(100000 + Math.random() * 900000).toString();
+    }
+
+    this.generatedOTP = otpCode;
 
     const step1 = document.getElementById('otp-step-1');
     const step2 = document.getElementById('otp-step-2');
@@ -162,24 +184,72 @@ window.VDAuth = {
       step1.classList.add('hidden');
       step2.classList.remove('hidden');
     }
-    if (displayEmail) displayEmail.textContent = email;
+    if (displayEmail) displayEmail.textContent = this.otpEmailTarget;
+
+    const otpInput = document.getElementById('otp-code-input');
+    if (otpInput) {
+      otpInput.value = '';
+      otpInput.focus();
+    }
 
     if (window.showNotification) {
-      window.showNotification(`OTP Code Sent! Use code: ${this.generatedOTP}`, 'info');
+      if (otpCode) {
+        window.showNotification(`OTP Code Sent to ${this.otpEmailTarget}! Code: ${otpCode}`, 'info');
+      } else {
+        window.showNotification(`OTP Code sent to ${this.otpEmailTarget}! Please check your email.`, 'info');
+      }
     }
   },
 
   verifyEmailOTP: async function(enteredOTP) {
-    if (!this.generatedOTP || enteredOTP !== this.generatedOTP) {
-      throw new Error("Invalid OTP code. Please enter the 6-digit OTP code.");
+    if (!enteredOTP || enteredOTP.length < 6) {
+      throw new Error("Please enter the complete 6-digit OTP code.");
     }
 
-    const email = this.otpEmailTarget || 'user@example.com';
+    const email = this.otpEmailTarget;
+    let verified = false;
+
+    try {
+      const res = await fetch('/api/verify-user-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, otp: enteredOTP })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        verified = true;
+      } else if (!res.ok && data.error && !data.error.includes('Failed to verify')) {
+        throw new Error(data.error);
+      }
+    } catch(err) {
+      if (err.message.includes('Invalid') || err.message.includes('expired') || err.message.includes('requested')) {
+        throw err;
+      }
+    }
+
+    if (!verified) {
+      if (this.generatedOTP && enteredOTP === this.generatedOTP) {
+        verified = true;
+      } else {
+        throw new Error("Invalid 6-digit OTP code. Please check and try again.");
+      }
+    }
+
     const user = await this.login(email, 'otp_logged_in');
-    
     this.generatedOTP = null;
     this.otpEmailTarget = null;
+
+    this.resetOTPStep();
     return user;
+  },
+
+  resetOTPStep: function() {
+    const step1 = document.getElementById('otp-step-1');
+    const step2 = document.getElementById('otp-step-2');
+    if (step1 && step2) {
+      step1.classList.remove('hidden');
+      step2.classList.add('hidden');
+    }
   },
 
   loginWithGoogle: function() {
@@ -272,7 +342,7 @@ window.VDAuth = {
     const existing = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
 
     if (existing) {
-      throw new Error("An account with this email already exists. Please login instead.");
+      throw new Error("An account with this email already exists.");
     }
 
     const newUser = {
@@ -326,6 +396,7 @@ window.VDAuth = {
     }
     const modal = document.getElementById('vd-auth-modal');
     if (modal) {
+      this.resetOTPStep();
       modal.classList.remove('hidden');
       modal.classList.add('flex');
     }
@@ -353,20 +424,21 @@ window.VDAuth = {
         container.innerHTML = `
           <button onclick="VDAuth.openAuthModal()" class="bg-[#D4AF37] hover:bg-[#F3CD46] text-[#0B1F3A] font-bold text-xs py-2 px-4 rounded-full shadow transition-all flex items-center space-x-1.5 cursor-pointer">
             <i class="fas fa-user text-[11px]"></i>
-            <span>Login / Register</span>
+            <span>Sign In</span>
           </button>
         `;
       } else {
         container.innerHTML = `
           <div class="relative group">
-            <button class="flex items-center space-x-2 bg-navy-900 border border-slate-800 hover:border-[#D4AF37]/50 py-1.5 px-3 rounded-full text-xs text-white transition-all">
+            <a href="profile.html" class="flex items-center space-x-2 bg-navy-900 border border-slate-800 hover:border-[#D4AF37]/50 py-1.5 px-3 rounded-full text-xs text-white transition-all cursor-pointer">
               <div class="w-6 h-6 rounded-full bg-[#D4AF37] text-[#0B1F3A] font-bold flex items-center justify-center text-[11px] uppercase">
                 ${user.name ? user.name.charAt(0) : 'U'}
               </div>
               <span class="font-semibold max-w-[100px] truncate">${user.name}</span>
               <i class="fas fa-chevron-down text-[9px] text-gray-400"></i>
-            </button>
+            </a>
             <div class="absolute right-0 mt-2 w-48 bg-navy-950 border border-slate-800 rounded-2xl shadow-2xl py-2 hidden group-hover:block z-[150] space-y-1">
+
               <div class="px-4 py-2 border-b border-slate-800">
                 <p class="text-xs font-bold text-white truncate">${user.name}</p>
                 <p class="text-[10px] text-gray-400 truncate">${user.email}</p>
@@ -405,7 +477,7 @@ window.VDAuth = {
             <i class="fas fa-user-shield"></i>
           </div>
           <h3 id="auth-modal-title" class="text-xl font-bold">Sign In to VD Creation</h3>
-          <p id="auth-modal-subtitle" class="text-xs text-gray-400">Choose your preferred sign in option</p>
+          <p id="auth-modal-subtitle" class="text-xs text-gray-400">Sign in securely using Google or Email OTP</p>
         </div>
 
         <!-- Google Sign In Button -->
@@ -423,13 +495,6 @@ window.VDAuth = {
           <div class="flex-grow border-t border-slate-800"></div>
           <span class="flex-shrink mx-4 text-[10px] text-gray-500 uppercase font-bold tracking-wider">or sign in with email</span>
           <div class="flex-grow border-t border-slate-800"></div>
-        </div>
-
-        <!-- Auth Tabs -->
-        <div class="flex border-b border-slate-800 text-xs font-bold text-center">
-          <button id="auth-tab-otp" onclick="VDAuth.switchAuthTab('otp')" class="flex-1 py-2.5 border-b-2 border-[#D4AF37] text-[#D4AF37]">Email OTP</button>
-          <button id="auth-tab-password" onclick="VDAuth.switchAuthTab('password')" class="flex-1 py-2.5 border-b-2 border-transparent text-gray-400 hover:text-white">Password</button>
-          <button id="auth-tab-signup" onclick="VDAuth.switchAuthTab('signup')" class="flex-1 py-2.5 border-b-2 border-transparent text-gray-400 hover:text-white">Register</button>
         </div>
 
         <!-- Email OTP Form -->
@@ -457,90 +522,16 @@ window.VDAuth = {
               <i class="fas fa-check-circle"></i>
               <span>Verify & Login</span>
             </button>
-            <button type="button" onclick="VDAuth.resendOTP()" class="w-full text-center text-[10px] text-gray-400 hover:text-white">Didn't receive OTP? Resend</button>
+            <div class="flex items-center justify-between text-[10px] text-gray-400">
+              <button type="button" onclick="VDAuth.resetOTPStep()" class="hover:text-white transition-colors">← Change Email</button>
+              <button type="button" onclick="VDAuth.resendOTP()" class="hover:text-[#D4AF37] transition-colors">Resend Code</button>
+            </div>
           </form>
         </div>
-
-        <!-- Password Login Form -->
-        <form id="auth-password-form" onsubmit="VDAuth.handleLoginSubmit(event)" class="space-y-4 hidden">
-          <div>
-            <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Email Address</label>
-            <input type="email" id="login-email" required placeholder="name@example.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37]">
-          </div>
-          <div>
-            <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Password</label>
-            <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37]">
-          </div>
-          <button type="submit" class="w-full bg-[#D4AF37] hover:bg-[#F3CD46] text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-colors">
-            Login & Continue
-          </button>
-        </form>
-
-        <!-- Register Form -->
-        <form id="auth-signup-form" onsubmit="VDAuth.handleSignupSubmit(event)" class="space-y-4 hidden">
-          <div>
-            <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Full Name</label>
-            <input type="text" id="signup-name" required placeholder="Akhil Neela" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37]">
-          </div>
-          <div>
-            <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Email Address</label>
-            <input type="email" id="signup-email" required placeholder="name@example.com" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37]">
-          </div>
-          <div>
-            <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Mobile Phone (Optional)</label>
-            <input type="tel" id="signup-phone" placeholder="9876543210" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37]">
-          </div>
-          <div>
-            <label class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Password</label>
-            <input type="password" id="signup-password" required minlength="6" placeholder="At least 6 characters" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#D4AF37]">
-          </div>
-          <button type="submit" class="w-full bg-[#D4AF37] hover:bg-[#F3CD46] text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-colors">
-            Create Account
-          </button>
-        </form>
       </div>
     `;
 
     document.body.appendChild(modal);
-  },
-
-  switchAuthTab: function(tab) {
-    const tabOtp = document.getElementById('auth-tab-otp');
-    const tabPass = document.getElementById('auth-tab-password');
-    const tabSignup = document.getElementById('auth-tab-signup');
-    
-    const formOtp = document.getElementById('auth-otp-form');
-    const formPass = document.getElementById('auth-password-form');
-    const formSignup = document.getElementById('auth-signup-form');
-
-    const activeClass = "flex-1 py-2.5 border-b-2 border-[#D4AF37] text-[#D4AF37]";
-    const inactiveClass = "flex-1 py-2.5 border-b-2 border-transparent text-gray-400 hover:text-white";
-
-    if (tab === 'otp') {
-      tabOtp.className = activeClass;
-      tabPass.className = inactiveClass;
-      tabSignup.className = inactiveClass;
-
-      formOtp.classList.remove('hidden');
-      formPass.classList.add('hidden');
-      formSignup.classList.add('hidden');
-    } else if (tab === 'password') {
-      tabPass.className = activeClass;
-      tabOtp.className = inactiveClass;
-      tabSignup.className = inactiveClass;
-
-      formPass.classList.remove('hidden');
-      formOtp.classList.add('hidden');
-      formSignup.classList.add('hidden');
-    } else {
-      tabSignup.className = activeClass;
-      tabOtp.className = inactiveClass;
-      tabPass.className = inactiveClass;
-
-      formSignup.classList.remove('hidden');
-      formOtp.classList.add('hidden');
-      formPass.classList.add('hidden');
-    }
   },
 
   handleSendOTPSubmit: async function(e) {
@@ -567,30 +558,6 @@ window.VDAuth = {
     if (this.otpEmailTarget) {
       this.sendEmailOTP(this.otpEmailTarget);
     }
-  },
-
-  handleLoginSubmit: async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value;
-    try {
-      await this.login(email, password);
-    } catch(err) {
-      if (window.showNotification) window.showNotification(err.message, 'error');
-    }
-  },
-
-  handleSignupSubmit: async function(e) {
-    e.preventDefault();
-    const name = document.getElementById('signup-name').value.trim();
-    const email = document.getElementById('signup-email').value.trim();
-    const phone = document.getElementById('signup-phone').value.trim();
-    const password = document.getElementById('signup-password').value;
-    try {
-      await this.signup(name, email, password, phone);
-    } catch(err) {
-      if (window.showNotification) window.showNotification(err.message, 'error');
-    }
   }
 };
 
@@ -598,3 +565,4 @@ window.VDAuth = {
 document.addEventListener('DOMContentLoaded', () => {
   window.VDAuth.init();
 });
+

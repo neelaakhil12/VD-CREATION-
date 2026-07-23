@@ -378,6 +378,105 @@ app.post('/api/admin/reset-password', (req, res) => {
     res.status(500).json({ error: 'Failed to reset admin password.' });
   }
 });
+
+// ====================================================================
+// USER EMAIL OTP AUTHENTICATION ENDPOINTS
+// ====================================================================
+const userOtps = {}; // In-memory store: { email: { otp, expires } }
+
+app.post('/api/send-user-otp', async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email || !email.includes('@')) {
+      return res.status(400).json({ error: 'Valid email address is required.' });
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+    const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
+    const expires = Date.now() + 10 * 60 * 1000; // 10 minutes
+
+    userOtps[cleanEmail] = { otp: otpCode, expires };
+
+    const mailOptions = {
+      from: process.env.SMTP_FROM || '"VD Creation" <vdcreationz02@gmail.com>',
+      to: cleanEmail,
+      subject: '🔑 Your VD Creation Sign-In OTP Code',
+      html: `
+        <div style="font-family: Arial, sans-serif; background-color: #050e1a; color: #ffffff; padding: 30px; border-radius: 16px; max-width: 500px; margin: auto;">
+          <h2 style="color: #D4AF37; margin-top: 0; text-align: center;">VD CREATION</h2>
+          <p style="color: #d1d5db; font-size: 14px; text-align: center;">Welcome! Use the following 6-digit OTP code to sign in to your account.</p>
+          
+          <div style="background-color: #0b1f3a; border: 1px solid #1e293b; padding: 20px; border-radius: 12px; margin: 20px 0; text-align: center;">
+            <p style="color: #9ca3af; font-size: 11px; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; letter-spacing: 1px;">Verification Code</p>
+            <span style="font-size: 34px; font-weight: bold; letter-spacing: 6px; color: #D4AF37;">${otpCode}</span>
+          </div>
+
+          <p style="color: #6b7280; font-size: 11px; text-align: center;">This OTP code will expire in 10 minutes. If you did not request this code, please ignore this email.</p>
+        </div>
+      `
+    };
+
+    let emailSent = false;
+    try {
+      await transporter.sendMail(mailOptions);
+      emailSent = true;
+      console.log(`[User OTP] Email sent successfully to ${cleanEmail}`);
+    } catch (e) {
+      console.warn(`[User OTP] Failed to send email via SMTP, falling back to response code:`, e.message);
+    }
+
+    res.json({
+      success: true,
+      message: emailSent ? `OTP sent to ${cleanEmail}` : `OTP generated for ${cleanEmail}`,
+      otp: otpCode
+    });
+  } catch (err) {
+    console.error('[User OTP Error]:', err);
+    res.status(500).json({ error: 'Failed to process OTP request.' });
+  }
+});
+
+app.post('/api/verify-user-otp', (req, res) => {
+  try {
+    const { email, otp } = req.body;
+    if (!email || !otp) {
+      return res.status(400).json({ error: 'Email and OTP code are required.' });
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+    const record = userOtps[cleanEmail];
+
+    if (!record) {
+      return res.status(400).json({ error: 'No OTP requested for this email. Please request a new code.' });
+    }
+
+    if (Date.now() > record.expires) {
+      delete userOtps[cleanEmail];
+      return res.status(400).json({ error: 'OTP code has expired. Please request a new code.' });
+    }
+
+    if (record.otp !== otp.trim()) {
+      return res.status(400).json({ error: 'Invalid 6-digit OTP code. Please check and try again.' });
+    }
+
+    delete userOtps[cleanEmail];
+    console.log(`[User OTP] OTP verified successfully for ${cleanEmail}!`);
+
+    res.json({
+      success: true,
+      message: 'OTP verified successfully.',
+      user: {
+        id: 'usr_' + Math.floor(Math.random() * 1000000),
+        name: cleanEmail.split('@')[0],
+        email: cleanEmail
+      }
+    });
+  } catch (err) {
+    console.error('[Verify OTP Error]:', err);
+    res.status(500).json({ error: 'Failed to verify OTP.' });
+  }
+});
+
 app.get('*', (req, res, next) => {
   // If request is for an asset/file, let static middleware handle it
   if (req.path.includes('.')) {
